@@ -19,18 +19,18 @@ Historical images are a valuable source of information in analyzing the evolutio
 Current state-of-the-art feature matching methods include SIFT (hand-crafted) and SuperGlue (deep learning). They work well on images within the same epoch (also refered to intra-epoch).
 
 <p align="center">
-  <img src="images/intra.png" width="500">
+  <img src="images/intra.png" width="800">
 </p>
 
-<center>
+<p align="center">
 Figure. Intra-epoch image pair
-  <br> 
-</center>
+</p>
+
 
 # Methodology
 
 <p align="center">
-  <img src="images/flowchart.png" width="500">
+  <img src="images/flowchart.png" width="800">
 </p>
 
 <center>
