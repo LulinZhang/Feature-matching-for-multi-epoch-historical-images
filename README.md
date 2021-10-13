@@ -42,11 +42,7 @@ Both methods recovered a lot of good correspondences.
 
 |         Intra-epoch image pair        | Inter-epoch image pair |
 |-|-|
-| <p align="center">
- <img src="images/intra.png" width="300">
-</p> | <p align="center">
-  <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="300">
-</p> |
+| <p align="center"> <img src="images/intra.png" width="300"> </p> | <p align="center"> <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="300"> </p> |
 
 In this work we propose a fully automatic approach to computing dense and robust inter-epoch feature correspondences. Our method consists of a rough co-registration by finding feature correspondences between DSMs derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:
 * By matching DSMs, we are able to obtain robust rough co-registration as the 3D landscape often stays globally stable over time.
