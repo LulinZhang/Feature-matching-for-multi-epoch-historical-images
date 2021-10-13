@@ -17,6 +17,30 @@ title: "Feature matching for multi-epoch historical aerial images"
 
 Historical imagery is characterized by high spatial resolution and stereoscopic acquisitions, providing a valuable resource for recovering 3D land-cover information. Accurate geo-referencing of diachronic historical images by means of self-calibration remains a bottleneck because of the difficulty to find sufficient amount of feature correspondences under evolving landscapes. As shown in Figures XX, YYY current *state-of-the-art* feature matching methods (including SIFT ***ref*** and SuperGlue ***ref***) perfom well on images acquired within the same epoch (also refered to as intra-epoch). Yet, due to drastic scene changes and heterogeneous acquisition conditions, they underperform to find feature correspondences across different epochs (also referred to as inter-epoch).
 
+<p align="center">
+  <img src="images/intra.png" width="400">
+</p>
+<p align="center">
+(a) Intra-epoch image pair
+</p>
+<p align="center">
+  <img src="images/Homol-SIFT_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400">
+</p>
+<p align="center">
+(b) SIFT correspondences
+</p>
+<p align="center">
+  <img src="images/Homol-SuperGlue_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400">
+</p>
+<p align="center">
+(c) SuperGlue correspondences
+</p>
+
+<p align="center">
+Figure. SIFT and SuperGlue feature computed on an intra-epoch image pair. The blue line connecting 2 points from the left and right images represent the feature correspondences.
+Both methods recovered a lot of good correspondences.
+</p>
+
 In this work we propose a fully automatic approach to computing dense and robust inter-epoch feature correspondences. Our method consists of a rough co-registration by finding feature correspondences between DSMs derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:
 * By matching DSMs, we are able to obtain robust rough co-registration as the 3D landscape often stays globally stable over time.
 * Under the guidance of co-registered orientations and DSMs, we reduce the difficulty in precise matching by: (1) narrowing down the search space; (2) reducing the combinatorial complexity since only overlapping images are analyzed;
@@ -24,28 +48,7 @@ In this work we propose a fully automatic approach to computing dense and robust
 * By including priors about the geometry (in form of DSMs), we can filter candidate correspondences: each three correspondences projected to DSM serve to compute a 3D Helmert transformation between epochs, and most importantly provide a 2D constraint on all images' correspondences.
  
 
-<p align="center">
-  <img src="images/intra.png" width="400">
-</p>
-<p align="center">
-Figure. Intra-epoch image pair
-</p>
-<p align="center">
-  <img src="images/Homol-SIFT_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400">
-</p>
-<p align="center">
-Figure. SIFT correspondences
-</p>
 
-<p align="center">
-  <img src="images/Homol-SuperGlue_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400">
-</p>
-<p align="center">
-Figure. SuperGlue correspondences
-</p>
-
-The blue line connecting 2 points from the left and right images represent the feature correspondences.
-Both methods recovered a lot of good correspondences.
 
 However, it is very challenging to recover correspondences in historical images taken at different time (also refered to as inter-epoch) due to:
 
