@@ -1,4 +1,3 @@
-'''
 ---
 layout: post
 author: Lulin Zhang, Ewelina Rupnik, Marc Pierrot-Deseilligny
@@ -12,7 +11,7 @@ categories: [Feature matching, Historical images, Multi-epoch, Pose estimation, 
 description: "Feature matching for multi-epoch historical aerial images"
 title: "Feature matching for multi-epoch historical aerial images" 
 ---
-'''
+
 
 # Introduction
 
