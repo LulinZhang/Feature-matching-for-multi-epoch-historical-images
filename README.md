@@ -15,8 +15,12 @@ title: "Feature matching for multi-epoch historical aerial images"
 
 # Introduction
 
-Historical images are a valuable source of information in analyzing the evolution of landscapes. To be able to fully exploit their potential, the images should be precisely calibrated with the help of feature correspondences.
+Historical images are a valuable source of information in analyzing the evolution of landscapes. 
+
+To be able to fully exploit their potential, the images should be precisely calibrated with the help of feature correspondences.
+
 Current state-of-the-art feature matching methods include SIFT (hand-crafted) and SuperGlue (deep learning). They work well on images within the same epoch (also refered to as intra-epoch).
+
 Below we display an intra-epoch image pair as well as the correspondences recovered by SIFT and SuperGlue.
 
 <p align="center">
@@ -70,8 +74,6 @@ Figure. Inter-epoch image pair
 Figure. SIFT: 0 correspondence
 </p>
 
-SIFT recovered 0 correspondence. It is reasonable because SIFT is not sufficiently invariant over time.
-
 <p align="center">
   <img src="images/Selection_533.png" width="600">
 </p>
@@ -80,8 +82,6 @@ SIFT recovered 0 correspondence. It is reasonable because SIFT is not sufficient
 Figure. SuperGlue: inaccurate correspondences
 </p>
 
-The result of SuperGlue seems not bad. However, the details revealed poor precision. This is not acceptable for high precision ground survey.
-
 <p align="center">
   <img src="images/Selection_534.png" width="600">
 </p>
@@ -89,6 +89,10 @@ The result of SuperGlue seems not bad. However, the details revealed poor precis
 <p align="center">
 Figure. Ours: accurate correspondences
 </p>
+
+SIFT recovered 0 correspondence. It is reasonable because SIFT is not sufficiently invariant over time.
+
+The result of SuperGlue seems not bad. However, the details revealed poor precision. This is not acceptable for high precision ground survey.
 
 Our method is capable to recover a large number of precise correspondences. The details will be introduced in section "Methodology".
 
@@ -187,7 +191,7 @@ We project the tentative correspondences onto respective DSMs to get 3D points, 
 spatial similarity model.
 
 <p align="center">
-  <img src="images/3DRANSAC.png" width="400">
+  <img src="images/3DRANSAC.png" width="300">
 </p>
 
 <p align="center">
