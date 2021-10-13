@@ -15,38 +15,31 @@ title: "Feature matching for multi-epoch historical aerial images"
 
 # Introduction
 
-Historical imagery is characterized by high spatial resolution and stereoscopic acquisitions, providing a valuable resource for recovering 3D land-cover information. Accurate geo-referencing of diachronic historical images by means of self-calibration remains a bottleneck because of the difficulty to find sufficient amount of feature correspondences under evolving landscapes. Current state-of-the-art feature matching methods, including SIFT *ref* (for hand-crafted) and SuperGlue *ref* (for learning based), perfom well on images acquired within the same epoch (also refered to as intra-epoch). Yet, due to drastic scene changes and heterogeneous acquisition conditions, they underperform to find feature correspondences across different epochs (also referred to as inter-epoch).
+Historical imagery is characterized by high spatial resolution and stereoscopic acquisitions, providing a valuable resource for recovering 3D land-cover information. Accurate geo-referencing of diachronic historical images by means of self-calibration remains a bottleneck because of the difficulty to find sufficient amount of feature correspondences under evolving landscapes. As shown in Figures XX, YYY current *state-of-the-art* feature matching methods (including SIFT ***ref*** and SuperGlue ***ref***) perfom well on images acquired within the same epoch (also refered to as intra-epoch). Yet, due to drastic scene changes and heterogeneous acquisition conditions, they underperform to find feature correspondences across different epochs (also referred to as inter-epoch).
 
 In this work we propose a fully automatic approach to computing dense and robust inter-epoch feature correspondences. Our method consists of a rough co-registration by finding feature correspondences between DSMs derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:
 * By matching DSMs, we are able to obtain robust rough co-registration as the 3D landscape often stays globally stable over time.
 * Under the guidance of co-registered orientations and DSMs, we reduce the difficulty in precise matching by: (1) narrowing down the search space; (2) reducing the combinatorial complexity since only overlapping images are analyzed;
-* By proposing a tiling scheme (including  one-to-many tiling in rough co-registration andone-to-one tiling in precise matching), we are opening up the possibility to scale-up the deep learning methods for feature matching. As we have shown in Section 4.3, using them out-of-the-box is inefficient. Large images demand high computing resources, while deep learning feature extraction methods are presumably trained on small images.
+* By proposing a tiling scheme (including  one-to-many tiling in rough co-registration andone-to-one tiling in precise matching), we are opening up the possibility to scale-up the deep learning methods for feature matching. As we have shown ***ref paper***, using them out-of-the-box is inefficient. Large images demand high computing resources, while deep learning feature extraction methods are presumably trained on small images.
 * By including priors about the geometry (in form of DSMs), we can filter candidate correspondences: each three correspondences projected to DSM serve to compute a 3D Helmert transformation between epochs, and most importantly provide a 2D constraint on all images' correspondences.
  
 
-
-Below we display an intra-epoch image pair as well as the correspondences recovered by SIFT and SuperGlue.
-
 <p align="center">
-  <img src="images/intra.png" width="600">
+  <img src="images/intra.png" width="400">
 </p>
-
 <p align="center">
 Figure. Intra-epoch image pair
 </p>
-
 <p align="center">
-  <img src="images/Homol-SIFT_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="600">
+  <img src="images/Homol-SIFT_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400">
 </p>
-
 <p align="center">
 Figure. SIFT correspondences
 </p>
 
 <p align="center">
-  <img src="images/Homol-SuperGlue_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="600">
+  <img src="images/Homol-SuperGlue_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400">
 </p>
-
 <p align="center">
 Figure. SuperGlue correspondences
 </p>
