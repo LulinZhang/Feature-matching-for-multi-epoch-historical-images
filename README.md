@@ -16,7 +16,8 @@ title: "Feature matching for multi-epoch historical aerial images"
 # Introduction
 
 Historical images are a valuable source of information in analyzing the evolution of landscapes. To be able to fully exploit their potential, the images should be precisely calibrated with the help of feature correspondences.
-Current state-of-the-art feature matching methods include SIFT (hand-crafted) and SuperGlue (deep learning). They work well on images within the same epoch (also refered to intra-epoch).
+Current state-of-the-art feature matching methods include SIFT (hand-crafted) and SuperGlue (deep learning). They work well on images within the same epoch (also refered to as intra-epoch).
+Below we display an intra-epoch image pair as well as the correspondences recovered by SIFT and SuperGlue.
 
 <p align="center">
   <img src="images/intra.png" width="600">
@@ -42,11 +43,16 @@ Figure. SIFT correspondences
 Figure. SuperGlue correspondences
 </p>
 
-However, it is very challenging to recover correspondences in multi-epoch historical images due to:
+The blue line connecting 2 points from the left and right images represent the feature correspondences.
+Both methods recovered a lot of good correspondences.
+
+However, it is very challenging to recover correspondences in historical images taken at different time (also refered to as inter-epoch) due to:
 
 * Drastic scene changes
 * Low radiometric quality
 * Deformation caused by scaning
+
+Below we display an inter-epoch image pair as well as the correspondences recovered by SIFT, SuperGlue and Ours.
 
 <p align="center">
   <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="600">
@@ -61,7 +67,7 @@ Figure. Inter-epoch image pair
 </p>
 
 <p align="center">
-Figure. SIFT correspondences
+Figure. SIFT: 0 correspondence
 </p>
 
 SIFT recovered 0 correspondence. It is reasonable because SIFT is not sufficiently invariant over time.
@@ -71,7 +77,7 @@ SIFT recovered 0 correspondence. It is reasonable because SIFT is not sufficient
 </p>
 
 <p align="center">
-Figure. SuperGlue correspondences
+Figure. SuperGlue: inaccurate correspondences
 </p>
 
 The result of SuperGlue seems not bad. However, the details revealed poor precision. This is not acceptable for high precision ground survey.
@@ -81,15 +87,15 @@ The result of SuperGlue seems not bad. However, the details revealed poor precis
 </p>
 
 <p align="center">
-Figure. Our correspondences
+Figure. Ours: accurate correspondences
 </p>
 
-Our method is capable to recover a large number of precise correspondences. The details will be introduced in next section.
+Our method is capable to recover a large number of precise correspondences. The details will be introduced in section "Methodology".
 
 # Methodology
 
 <p align="center">
-  <img src="images/flowchart.png" width="600">
+  <img src="images/flowchart.png" width="800">
 </p>
 
 <p align="center">
@@ -102,6 +108,8 @@ In the intra-epoch part, we process each epoch individually to get the image ori
 
 The inter-epoch part is the key point of our pipeline. It is a rough-to-precise matching strategy.
 
+In the combined processing, we use the correspondences to refine the orientations.
+
 ## Rough co-registration
 
 Based on the image orientations and DSM from each epoch, we first match the DSMs to roughly co-register the 2 epochs.
@@ -109,7 +117,7 @@ Based on the image orientations and DSM from each epoch, we first match the DSMs
 As SuperGlue provides unsatisfactory result on large images and it is not invariant to rotations larger than 45◦, we introduce tiling scheme and rotation hypotheses to improve the performance of SuperGlue.
 
 <p align="center">
-  <img src="images/tilematch.png" width="600">
+  <img src="images/tilematch.png" width="800">
 </p>
 
 <p align="center">
@@ -117,7 +125,7 @@ Figure. Workflow of the rough co-registration
 </p>
 
 <p align="center">
-  <img src="images/rotation.png" width="600">
+  <img src="images/rotation.png" width="800">
 </p>
 
 <p align="center">
@@ -162,6 +170,7 @@ We provide 2 options (guided matching and patch matching) to get tentative inter
 
 ### Get tentative inter-epoch correspondences
 Guided matching is designed for hand-crafted methods like SIFT. We predict the keypoint locaiton from one epoch to another via the co-registered DSM, and search only the neighborhood of the predicted keypoint to reduce ambiguity.
+
 Patch matching is designed for deep learning methods like SuperGlue. We use the co-registered DSM to predict the corresponding patches, followed with resampling to remove the scale and rotation difference. The patch pair will be feed into SuperGlue to get tentative correspondences.
 
 <p align="center">
@@ -242,10 +251,17 @@ Figure. DoD in real case
 </p>
 
 We display 4 sets of DoDs below.
-(1) DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated;
-(2) DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. The systematic error is mitigated thanks to our dense correspondences in DSMs;
+
+(1) DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. 
+    This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated;
+
+(2) DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. 
+    The systematic error is mitigated thanks to our dense correspondences in DSMs;
+
 (3) DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching;
+
 (4) DoD resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
+
 In the DoD of (3) and (4), the doom effect is effectively mitigated while the real scene changes are kept, thanks to our numerous and precise inter-epoch correspondences.
 
 <p align="center">
@@ -269,13 +285,13 @@ Figure. Scene evolution
 # Conclusion
 
 The main contributions of our method:
-* Match DSM with tiling scheme for co-registration
-* Use DSM for prediction to reduce ambiguity in precise matching
+* Match DSM with tiling scheme for co-registration;
+* Use DSM for prediction to reduce ambiguity in precise matching.
 
 The advantages of our method:
 * Mitigate systematic errors induced by poorly estimated camera
-parameters
-* Robust to drastic scene changes
+parameters;
+* Robust to drastic scene changes.
 
 # Reference
 
