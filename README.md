@@ -43,12 +43,13 @@ Both methods recovered a lot of good correspondences.
 |         Intra-epoch image pair        | Inter-epoch image pair |
 |-|-|
 | <p align="center"> <img src="images/intra.png" width="400"> </p> | <p align="center"> <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="400"> </p> |
-|       SIFT  |          SIFT : 0 correspondences   |
+|   <p align="center">   ***SIFT*** </p> |      <p align="center">    SIFT : 0 correspondences  </p> |
 | <p align="center"> <img src="images/Homol-SIFT_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400"> </p> | <p align="center">  <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="400"> </p> |
-|     SuperGLUE      |      SuperGLUE : inaccurate correspondences         |
+|  <p align="center">   SuperGLUE </p>     |   <p align="center">   SuperGLUE : inaccurate correspondences  </p>       |
 | <p align="center"> <img src="images/Homol-SuperGlue_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400"> </p> | <p align="center">  <img src="images/Selection_533.png" width="300"> </p> |
 | | <p align="center"> Ours : accurate correspondences </p> |
 | |<p align="center"> <img src="images/Selection_534.png" width="300"> </p>|
+| <p align="center"> SIFT and SuperGlue feature computed on an intra-epoch (left) and inter-epoch (right) image pair. The blue line connecting 2 points from the left and right images represent the feature correspondences. </p> | |
 
 In this work we propose a fully automatic approach to computing dense and robust inter-epoch feature correspondences. Our method consists of a rough co-registration by finding feature correspondences between DSMs derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:
 * By matching DSMs, we are able to obtain robust rough co-registration as the 3D landscape often stays globally stable over time.
