@@ -204,7 +204,7 @@ Figure. Cross-correlation
 We test our method on a dataset with drastic scene changes.
 
 <p align="center">
-  <img src="images/1954.png" width="600">
+  <img src="images/1954.png" width="450">
 </p>
 
 <p align="center">
@@ -212,7 +212,7 @@ Figure. Epoch 1954
 </p>
 
 <p align="center">
-  <img src="images/2014.png" width="600">
+  <img src="images/2014.png" width="450">
 </p>
 
 <p align="center">
