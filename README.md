@@ -1,3 +1,4 @@
+'''
 ---
 layout: post
 author: Lulin Zhang, Ewelina Rupnik, Marc Pierrot-Deseilligny
@@ -11,7 +12,7 @@ categories: [Feature matching, Historical images, Multi-epoch, Pose estimation, 
 description: "Feature matching for multi-epoch historical aerial images"
 title: "Feature matching for multi-epoch historical aerial images" 
 ---
-
+'''
 
 # Introduction
 
@@ -114,6 +115,8 @@ The inter-epoch part is the key point of our pipeline. It is a rough-to-precise 
 
 In the combined processing, we use the correspondences to refine the orientations.
 
+The details of the inter-epoch processing are explained below:
+
 ## Rough co-registration
 
 Based on the image orientations and DSM from each epoch, we first match the DSMs to roughly co-register the 2 epochs.
@@ -145,7 +148,7 @@ We display an example to show how our tiling scheme improved the performance of 
 </p>
 
 <p align="center">
-Figure. Multi-epoch DSM pair (red rectangles indicate the overlapping area)
+Figure. Multi-epoch DSM pair (Left and right are DSMs of epoch 1954 and 2014 individually. Red rectangles indicate the overlapping area.)
 </p>
 
 <p align="center">
@@ -164,7 +167,7 @@ Figure. Correspondences of SuperGlue
 Figure. Correspondences of ours
 </p>
 
-As can be seen, the correspondences of SuperGlue are all wrong, while ours (SuperGlue combined with tiling scheme) recovered a large number of good correspondences.
+As can be seen, the correspondences of SuperGlue are all wrong, while ours (SuperGlue combined with tiling scheme, followed by RANSAC) recovered a large number of good correspondences.
 
 ## Precise matching
 
@@ -214,7 +217,7 @@ Figure. Cross-correlation
 
 # Experiment
 
-We test our method on a dataset with drastic scene changes.
+We test our method on a dataset with drastic scene changes displayed below:
 
 <p align="center">
   <img src="images/1954.png" width="450">
@@ -232,9 +235,9 @@ Figure. Epoch 1954
 Figure. Epoch 2014
 </p>
 
-We refine the image orientations with our inter-epoch correspondences, and use it to calculate DSMs in each epoch and adopt the conception of DoD (Difference of DSMs) for evaluation.
+We recover inter-epoch correspondences and refine the image orientations, then calculate DSMs in each epoch and adopt the conception of DoD (Difference of DSMs) for evaluation.
 
-Ideally, the DoD should only display the scene changes as the picture shown below.
+Ideally, the DoD should only display the scene changes as shown in the picture below.
 
 <p align="center">
   <img src="images/IdealDoD.png" width="600">
@@ -257,9 +260,11 @@ Figure. DoD in real case
 We display 4 sets of DoDs below.
 
 (1) DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. 
+
     This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated;
 
 (2) DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. 
+
     The systematic error is mitigated thanks to our dense correspondences in DSMs;
 
 (3) DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching;
@@ -289,7 +294,7 @@ Figure. Scene evolution
 # Conclusion
 
 The main contributions of our method:
-* Match DSM with tiling scheme for co-registration;
+* Match DSM with tiling scheme and rotation hypotheses for co-registration;
 * Use DSM for prediction to reduce ambiguity in precise matching.
 
 The advantages of our method:
@@ -299,7 +304,7 @@ parameters;
 
 # Reference
 
--   ***L. Zhang***, E. Rupnik, M. Pierrot-Deseilligny, [Feature matching for multi-epoch historical aerial images, ISPRS journal of photogrammetry and remote sensing](https://linktobeadded)
+-   ***L. Zhang***, E. Rupnik, M. Pierrot-Deseilligny, [Feature matching for multi-epoch historical aerial images](https://linktobeadded), ISPRS journal of photogrammetry and remote sensing
 
 - [Jupyter tutorial of our method for matching multi-epoch historical aerial images](https://colab.research.google.com/drive/1poEXIeKbPcJT_2hyQOBhzcj1EEhO8OgD)
 
