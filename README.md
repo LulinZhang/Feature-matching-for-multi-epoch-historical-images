@@ -260,11 +260,11 @@ We display 4 sets of DoDs below.
 
 (1) DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. 
 
-    This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated;
+This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated;
 
 (2) DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. 
 
-    The systematic error is mitigated thanks to our dense correspondences in DSMs;
+The systematic error is mitigated thanks to our dense correspondences in DSMs;
 
 (3) DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching;
 
