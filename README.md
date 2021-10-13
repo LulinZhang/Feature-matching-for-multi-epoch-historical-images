@@ -19,7 +19,7 @@ Historical images are a valuable source of information in analyzing the evolutio
 Current state-of-the-art feature matching methods include SIFT (hand-crafted) and SuperGlue (deep learning). They work well on images within the same epoch (also refered to intra-epoch).
 
 <p align="center">
-  <img src="images/intra.png" width="800">
+  <img src="images/intra.png" width="600">
 </p>
 
 <p align="center">
@@ -27,7 +27,7 @@ Figure. Intra-epoch image pair
 </p>
 
 <p align="center">
-  <img src="images/Homol-SIFT_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="800">
+  <img src="images/Homol-SIFT_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="600">
 </p>
 
 <p align="center">
@@ -35,7 +35,7 @@ Figure. SIFT correspondences
 </p>
 
 <p align="center">
-  <img src="images/Homol-SuperGlue_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="800">
+  <img src="images/Homol-SuperGlue_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="600">
 </p>
 
 <p align="center">
@@ -49,7 +49,7 @@ However, it is very challenging to recover correspondences in multi-epoch histor
 * Deformation caused by scaning
 
 <p align="center">
-  <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="800">
+  <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="600">
 </p>
 
 <p align="center">
@@ -57,7 +57,7 @@ Figure. Inter-epoch image pair
 </p>
 
 <p align="center">
-  <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="800">
+  <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="600">
 </p>
 
 <p align="center">
@@ -67,7 +67,7 @@ Figure. SIFT correspondences
 SIFT recovered 0 correspondence. It is reasonable because SIFT is not sufficiently invariant over time.
 
 <p align="center">
-  <img src="images/Selection_533.png" width="800">
+  <img src="images/Selection_533.png" width="600">
 </p>
 
 <p align="center">
@@ -77,7 +77,7 @@ Figure. SuperGlue correspondences
 The result of SuperGlue seems not bad. However, the details revealed poor precision. This is not acceptable for high precision ground survey.
 
 <p align="center">
-  <img src="images/Selection_534.png" width="800">
+  <img src="images/Selection_534.png" width="600">
 </p>
 
 <p align="center">
@@ -89,7 +89,7 @@ Our method is capable to recover a large number of precise correspondences. The 
 # Methodology
 
 <p align="center">
-  <img src="images/flowchart.png" width="800">
+  <img src="images/flowchart.png" width="600">
 </p>
 
 <p align="center">
@@ -101,23 +101,189 @@ Our pipeline consists of 3 parts of processing: intra-epoch, inter-epoch and com
 In the intra-epoch part, we process each epoch individually to get the image orientations and DSM.
 
 The inter-epoch part is the key point of our pipeline. It is a rough-to-precise matching strategy.
+
+## Rough co-registration
+
 Based on the image orientations and DSM from each epoch, we first match the DSMs to roughly co-register the 2 epochs.
 
+As SuperGlue provides unsatisfactory result on large images and it is not invariant to rotations larger than 45◦, we introduce tiling scheme and rotation hypotheses to improve the performance of SuperGlue.
+
 <p align="center">
-  <img src="images/tilematch.png" width="800">
+  <img src="images/tilematch.png" width="600">
 </p>
 
 <p align="center">
 Figure. Workflow of the rough co-registration
 </p>
 
-We introduce tiling scheme and 
+<p align="center">
+  <img src="images/rotation.png" width="600">
+</p>
 
- then use it to guide a precise matching. We provide 
+<p align="center">
+Figure. Four rotation hypotheses
+</p>
+
+> Note: For more details, please refer to our publication [Feature matching for multi-epoch historical aerial images](https://linktobeadded)
+
+We display an example to show how our tiling scheme improved the performance of SuperGlue:
+
+<p align="center">
+  <img src="images/DSMoverlapping.png" width="600">
+</p>
+
+<p align="center">
+Figure. Multi-epoch DSM pair (red rectangles indicate the overlapping area)
+</p>
+
+<p align="center">
+  <img src="images/DSM-SuperGlue.png" width="600">
+</p>
+
+<p align="center">
+Figure. Correspondences of SuperGlue
+</p>
+
+<p align="center">
+  <img src="images/DSM-Ours.png" width="600">
+</p>
+
+<p align="center">
+Figure. Correspondences of ours
+</p>
+
+As can be seen, the correspondences of SuperGlue are all wrong, while ours (SuperGlue combined with tiling scheme) recovered a large number of good correspondences.
+
+## Precise matching
+
+We perform a precise matching under the guidance of the co-registered DSM.
+
+We provide 2 options (guided matching and patch matching) to get tentative inter-epoch correspondences, then remove the outliers with 3D RANSAC and cross correlation.
+
+### Get tentative inter-epoch correspondences
+Guided matching is designed for hand-crafted methods like SIFT. We predict the keypoint locaiton from one epoch to another via the co-registered DSM, and search only the neighborhood of the predicted keypoint to reduce ambiguity.
+Patch matching is designed for deep learning methods like SuperGlue. We use the co-registered DSM to predict the corresponding patches, followed with resampling to remove the scale and rotation difference. The patch pair will be feed into SuperGlue to get tentative correspondences.
+
+<p align="center">
+  <img src="images/precisematch.png" width="600">
+</p>
+
+<p align="center">
+Figure. Guided matching and patch matching
+</p>
+
+### Get enhanced inter-epoch correspondences
+
+We project the tentative correspondences onto respective DSMs to get 3D points, and remove outliers in a RANSAC routine based on 3D
+spatial similarity model.
+
+<p align="center">
+  <img src="images/3DRANSAC.png" width="600">
+</p>
+
+<p align="center">
+Figure. 3D RANSAC
+</p>
+
+### Get final inter-epoch correspondences
+
+We apply cross-correlation for final validation. Feature correspondences with their correlation scores below a predefined threshold
+are discarded.
+The rectangles in the picture below represent the cross-correlation window, false match (red) is eliminated, while true match (blue) is kept.
+
+<p align="center">
+  <img src="images/tiept.png" width="600">
+</p>
+
+<p align="center">
+Figure. Cross-correlation
+</p>
+
+# Experiment
+
+We test our method on a dataset with drastic scene changes.
+
+<p align="center">
+  <img src="images/1954.tif" width="600">
+</p>
+
+<p align="center">
+Figure. Epoch 1954
+</p>
+
+<p align="center">
+  <img src="images/2014.tif" width="600">
+</p>
+
+<p align="center">
+Figure. Epoch 2014
+</p>
+
+We refine the image orientations with our inter-epoch correspondences, and use it to calculate DSMs in each epoch and adopt the conception of DoD (Difference of DSMs) for evaluation.
+
+Ideally, the DoD should only display the scene changes as the picture shown below.
+
+<p align="center">
+  <img src="images/IdealDoD.png" width="600">
+</p>
+
+<p align="center">
+Figure. DoD in ideal case
+</p>
+
+But in real case, a doom effect as shown below would appear due to poorly estimated camera parameters.
+
+<p align="center">
+  <img src="images/RealDoD.png" width="600">
+</p>
+
+<p align="center">
+Figure. DoD in real case
+</p>
+
+We display 4 sets of DoDs below.
+(1) DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated;
+(2) DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. The systematic error is mitigated thanks to our dense correspondences in DSMs;
+(3) DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching;
+(4) DoD resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
+In the DoD of (3) and (4), the doom effect is effectively mitigated while the real scene changes are kept, thanks to our numerous and precise inter-epoch correspondences.
+
+<p align="center">
+  <img src="images/DoD.png" width="600">
+</p>
+
+<p align="center">
+Figure. DoD in real case
+</p>
+
+A subregion of scene evolution is displayed below, a seaport as well as several new buildings emerged and are well detected with our method.
+
+<p align="center">
+  <img src="images/sceneEvolution.png" width="600">
+</p>
+
+<p align="center">
+Figure. Scene evolution
+</p>
+
+# Conclusion
+
+The main contributions of our method:
+* Match DSM with tiling scheme for co-registration
+* Use DSM for prediction to reduce ambiguity in precise matching
+
+The advantages of our method:
+* Mitigate systematic errors induced by poorly estimated camera
+parameters
+* Robust to drastic scene changes
 
 # Reference
 
--   ***L. Zhang***, E. Rupnik, M. Pierrot-Deseilligny, Feature matching for multi-epoch historical aerial images, ISPRS journal of photogrammetry and remote sensing. (https://linktobeadded)
+-   ***L. Zhang***, E. Rupnik, M. Pierrot-Deseilligny, [Feature matching for multi-epoch historical aerial images, ISPRS journal of photogrammetry and remote sensing](https://linktobeadded)
+
+- [Jupyter tutorial of our method for matching multi-epoch historical aerial images](https://colab.research.google.com/drive/1poEXIeKbPcJT_2hyQOBhzcj1EEhO8OgD)
+
+- [Jupyter tutorial of our method for matching multi-epoch historical images (aerial and satellite images mixed)](https://colab.research.google.com/drive/14okQ8bBhEZmy6EGRIQvazTqrN39oc_K5)
 
 #  Contact
 
