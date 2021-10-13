@@ -178,7 +178,7 @@ We project the tentative correspondences onto respective DSMs to get 3D points, 
 spatial similarity model.
 
 <p align="center">
-  <img src="images/3DRANSAC.png" width="600">
+  <img src="images/3DRANSAC.png" width="400">
 </p>
 
 <p align="center">
@@ -192,7 +192,7 @@ are discarded.
 The rectangles in the picture below represent the cross-correlation window, false match (red) is eliminated, while true match (blue) is kept.
 
 <p align="center">
-  <img src="images/tiept.png" width="600">
+  <img src="images/tiept.png" width="500">
 </p>
 
 <p align="center">
@@ -204,7 +204,7 @@ Figure. Cross-correlation
 We test our method on a dataset with drastic scene changes.
 
 <p align="center">
-  <img src="images/1954.tif" width="600">
+  <img src="images/1954.png" width="600">
 </p>
 
 <p align="center">
@@ -212,7 +212,7 @@ Figure. Epoch 1954
 </p>
 
 <p align="center">
-  <img src="images/2014.tif" width="600">
+  <img src="images/2014.png" width="600">
 </p>
 
 <p align="center">
