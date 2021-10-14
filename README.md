@@ -146,7 +146,7 @@ are discarded.
 The rectangles in the picture below represent the cross-correlation window, false match (red) is eliminated, while true match (blue) is kept.
 
 <p align="center">
-  <img src="images/tiept.png" width="500">
+  <img src="images/tiept.png" width="400">
 </p>
 
 <p align="center">
@@ -200,7 +200,7 @@ The systematic error is mitigated thanks to our dense correspondences in DSMs;
 In the DoD of (3) and (4), the doom effect is effectively mitigated while the real scene changes are kept, thanks to our numerous and precise inter-epoch correspondences.
 
 <p align="center">
-  <img src="images/DoD.png" width="600">
+  <img src="images/DoD.png" width="800">
 </p>
 
 <p align="center">
