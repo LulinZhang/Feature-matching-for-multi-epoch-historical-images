@@ -35,7 +35,7 @@ In this work we propose a fully automatic approach to computing dense and robust
 * By proposing a tiling scheme (including  one-to-many tiling in rough co-registration andone-to-one tiling in precise matching), we are opening up the possibility to scale-up the deep learning methods for feature matching. As we have shown [^3], using them out-of-the-box is inefficient. Large images demand high computing resources, while deep learning feature extraction methods are presumably trained on small images.
 * By including priors about the geometry (in form of DSMs), we can filter candidate correspondences: each three correspondences projected to DSM serve to compute a 3D Helmert transformation between epochs, and most importantly provide a 2D constraint on all images' correspondences.
 
-In the follwoing the methodology as well as experiments are demenstrated. If you are interested in using our method, please refer to the source code of MicMac Github [^4], and 2 jupyter tutorials [^5] [^6].
+In the follwoing the methodology as well as experiments are demenstrated. If you are interested in using our method, please refer to the source code of MicMac Github [^4]. We also provide 2 jupyter tutorials [^5] [^6] to familiarize you with the usage.
 
 # Methodology
 
