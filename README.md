@@ -231,14 +231,9 @@ Figure. Scene evolution
 
 # Conclusion
 
-The main contributions of our method:
-* Match DSM with tiling scheme and rotation hypotheses for co-registration;
-* Use DSM for prediction to reduce ambiguity in precise matching.
+Our method exploited rough-to-precise matching strategy to reduce ambiguity with the help of the depth information. We also introduced tiling scheme and checking scale and rotation to upscale the matching performance.
 
-The advantages of our method:
-* Mitigate systematic errors induced by poorly estimated camera
-parameters;
-* Robust to drastic scene changes.
+Experiments showed that our method is able to mitigate systematic errors induced by poorly estimated camera, and it is robust to drastic scene changes.
 
 #  Contact
 
