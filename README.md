@@ -119,7 +119,7 @@ Guided matching is designed for hand-crafted methods like SIFT. We predict the k
 Patch matching is designed for deep learning methods like SuperGlue. We use the co-registered DSM to predict the corresponding patches, followed with resampling to remove the scale and rotation difference. The patch pair will be feed into SuperGlue to get tentative correspondences.
 
 <p align="center">
-  <img src="images/precisematch.png" width="600">
+  <img src="images/precisematch.png" width="800">
 </p>
 
 <p align="center">
