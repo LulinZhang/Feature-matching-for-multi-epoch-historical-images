@@ -157,21 +157,9 @@ Figure. Cross-correlation
 
 We test our method on a dataset with drastic scene changes displayed below:
 
-<p align="center">
-  <img src="images/1954.png" width="450">
-</p>
-
-<p align="center">
-Figure. Epoch 1954
-</p>
-
-<p align="center">
-  <img src="images/2014.png" width="450">
-</p>
-
-<p align="center">
-Figure. Epoch 2014
-</p>
+|         Epoch 1954        |         Epoch 2014        |
+|-|-|
+| <p align="center">  <img src="images/1954.png" width="450"> </p> |<p align="center"> <img src="images/2014.png" width="450"> </p> |
 
 We recover inter-epoch correspondences and refine the image orientations, then calculate DSMs in each epoch and adopt the conception of DoD (Difference of DSMs) for evaluation.
 
