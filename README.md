@@ -77,7 +77,7 @@ Figure. Workflow of the rough co-registration
 Figure. Four rotation hypotheses
 </p>
 
-> Note: For more details, please refer to our publication [^3]
+> Note: For more details, please refer to our publication [^3].
 
 We display an example to show how our tiling scheme improved the performance of SuperGlue:
 
