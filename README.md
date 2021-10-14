@@ -256,8 +256,7 @@ parameters;
 
 [^3]:  ***L. Zhang***, E. Rupnik, M. Pierrot-Deseilligny, [Feature matching for multi-epoch historical aerial images](https://linktobeadded), ISPRS journal of photogrammetry and remote sensing
 
-[^4]: MicMac, GitHub, https://github.com/micmacIGN/micmac/tree/
-master/src/uti_phgrm/TiePHistorical, 2021.
+[^4]: MicMac, GitHub, https://github.com/micmacIGN/micmac/tree/master/src/uti_phgrm/TiePHistorical, 2021.
 
 [^5]: [Jupyter tutorial of our method for matching multi-epoch historical aerial images](https://colab.research.google.com/drive/1poEXIeKbPcJT_2hyQOBhzcj1EEhO8OgD)
 
