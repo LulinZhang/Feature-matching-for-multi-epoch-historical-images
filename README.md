@@ -34,25 +34,8 @@ In this work we propose a fully automatic approach to computing dense and robust
 * Under the guidance of co-registered orientations and DSMs, we reduce the difficulty in precise matching by: (1) narrowing down the search space; (2) reducing the combinatorial complexity since only overlapping images are analyzed;
 * By proposing a tiling scheme (including  one-to-many tiling in rough co-registration andone-to-one tiling in precise matching), we are opening up the possibility to scale-up the deep learning methods for feature matching. As we have shown [^3], using them out-of-the-box is inefficient. Large images demand high computing resources, while deep learning feature extraction methods are presumably trained on small images.
 * By including priors about the geometry (in form of DSMs), we can filter candidate correspondences: each three correspondences projected to DSM serve to compute a 3D Helmert transformation between epochs, and most importantly provide a 2D constraint on all images' correspondences.
- 
 
-
-
-However, it is very challenging to recover correspondences in historical images taken at different time (also refered to as inter-epoch) due to:
-
-* Drastic scene changes
-* Low radiometric quality
-* Deformation caused by scaning
-
-Below we display an inter-epoch image pair as well as the correspondences recovered by SIFT, SuperGlue and Ours.
-
- 
-
-SIFT recovered 0 correspondence. It is reasonable because SIFT is not sufficiently invariant over time.
-
-The result of SuperGlue seems not bad. However, the details revealed poor precision. This is not acceptable for high precision ground survey.
-
-Our method is capable to recover a large number of precise correspondences. The details will be introduced in section "Methodology".
+In the follwoing the methodology as well as experiments are demenstrated. If you are interested in using our method, please refer to the source code of MicMac Github [^4], and 2 jupyter tutorials [^5] [^6].
 
 # Methodology
 
@@ -273,6 +256,9 @@ parameters;
 
 [^3]:  ***L. Zhang***, E. Rupnik, M. Pierrot-Deseilligny, [Feature matching for multi-epoch historical aerial images](https://linktobeadded), ISPRS journal of photogrammetry and remote sensing
 
-[^4]: [Jupyter tutorial of our method for matching multi-epoch historical aerial images](https://colab.research.google.com/drive/1poEXIeKbPcJT_2hyQOBhzcj1EEhO8OgD)
+[^4]: MicMac, GitHub, https://github.com/micmacIGN/micmac/tree/
+master/src/uti_phgrm/TiePHistorical, 2021.
 
-[^5]: [Jupyter tutorial of our method for matching multi-epoch historical images (aerial and satellite images mixed)](https://colab.research.google.com/drive/14okQ8bBhEZmy6EGRIQvazTqrN39oc_K5)
+[^5]: [Jupyter tutorial of our method for matching multi-epoch historical aerial images](https://colab.research.google.com/drive/1poEXIeKbPcJT_2hyQOBhzcj1EEhO8OgD)
+
+[^6]: [Jupyter tutorial of our method for matching multi-epoch historical images (aerial and satellite images mixed)](https://colab.research.google.com/drive/14okQ8bBhEZmy6EGRIQvazTqrN39oc_K5)
