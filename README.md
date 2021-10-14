@@ -30,10 +30,8 @@ Historical imagery is characterized by high spatial resolution and stereoscopic 
 <p align="center"> Figure XXX. SIFT, SuperGlue and Our features computed on an intra-epoch (left) and inter-epoch (right) image pair. The blue line connecting 2 points from the left and right images represent the feature correspondences. </p> 
 
 In this work we propose a fully automatic approach to computing dense and robust inter-epoch feature correspondences. Our method consists of a rough co-registration by finding feature correspondences between DSMs derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:
-* By matching DSMs, we are able to obtain robust rough co-registration as the 3D landscape often stays globally stable over time.
-* Under the guidance of co-registered orientations and DSMs, we reduce the difficulty in precise matching by: (1) narrowing down the search space; (2) reducing the combinatorial complexity since only overlapping images are analyzed;
-* By proposing a tiling scheme (including  one-to-many tiling in rough co-registration andone-to-one tiling in precise matching), we are opening up the possibility to scale-up the deep learning methods for feature matching. As we have shown [^3], using them out-of-the-box is inefficient. Large images demand high computing resources, while deep learning feature extraction methods are presumably trained on small images.
-* By including priors about the geometry (in form of DSMs), we can filter candidate correspondences: each three correspondences projected to DSM serve to compute a 3D Helmert transformation between epochs, and most importantly provide a 2D constraint on all images' correspondences.
+* Exploiting rough-to-precise matching strategy to reduce ambiguity: (1) use depth information to get robust rough co-registration as the 3D landscape often stays globally stable over time; (2) use co-registered depth information for prediction to narrow down search space.
+* Upscale the matching performance for both hand-crafted and deep learning methods: (1) for hand-crafted method, check scale and rotation of keypoints to reduce ambiguity; (2) for deep learning method, introduce tiling scheme to improve precision for high resolution images.
 
 In the follwoing the methodology as well as experiments are demenstrated. If you are interested in using our method, please refer to the source code of MicMac Github [^4]. We also provide 2 jupyter tutorials [^5] [^6] to familiarize you with the usage.
 
