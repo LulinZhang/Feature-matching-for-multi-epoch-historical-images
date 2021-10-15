@@ -244,7 +244,7 @@ Deep learning feature matching methods often provide inaccurate features for dif
 * features extracted on CNN feature maps with limited spatial resolution, with D2-Net as a representative.
 
 We can obtain accurate features on high resolution images by cropping the input images into tiles, and match the tile pairs in 2 possible ways:
-* If no *a priori* is available, it is neccessary to matching all the potential tile pairs;
+* If no *a priori* is available, it is neccessary to match all the potential tile pairs;
 * If *a priori* is available (e.g. the depths are roughly co-registered), it can be used to predict the tile from one image to another.
 
 #  Contact
