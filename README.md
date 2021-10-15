@@ -231,8 +231,8 @@ Experiments showed that our method is able to mitigate systematic errors induced
 
 ## 1. It is useful to adopt *a priori* to reduce ambiguity.
 
-As multi-epoch images often display very different appearance, it helps to exploit *a priori* (e.g. depth information extracted from single epoch) to narrow down the searching space. The *a priori* could be used in as many ways as possible. There are at least 3 ways to take advantage of depth information:
-* matching depth image for rough co-reigstration.
+As multi-epoch images often display very different appearance, it helps to exploit *a priori* (e.g. depth information extracted from single epoch) to narrow down the searching space. The *a priori* could be used in as many ways as possible. There are at least 3 ways to take advantage of the depth information:
+* matching depth images for rough co-reigstration.
 * use co-registered depth information to remove scale and rotation difference in 2 ways: (1) get patch pairs free of scale and rotation difference for deep learning matching methods such as SuperGlue; (2) reject candidate matches whose scales and rotations are incoherent with prediction.
 * filter candidate matches by projecting them onto depth to get 3D points, followed by running RANSAC on 3D Helmert transformation model.
 
