@@ -33,7 +33,8 @@ In this work we propose a fully automatic approach to computing dense and robust
 * Exploiting rough-to-precise matching strategy to reduce ambiguity: (1) use depth information to get robust rough co-registration as the 3D landscape often stays globally stable over time; (2) use co-registered depth information for prediction to narrow down search space.
 * Upscale the matching performance for both hand-crafted and deep learning methods: (1) for hand-crafted method, check scale and rotation of keypoints to reduce ambiguity; (2) for deep learning method, introduce tiling scheme to improve precision for high resolution images.
 
-In the follwoing the methodology as well as experiments are demenstrated. If you are interested in using our method, please refer to the source code of MicMac Github [^4]. We also provide 2 jupyter tutorials [^5] [^6] to familiarize you with the usage.
+In the follwoing the methodology as well as experiments are demenstrated. 
+If you are interested in using our method, please refer to the source code of MicMac Github [^4]. We also provide 2 jupyter tutorials [^5] [^6] to familiarize you with the usage. We also provide an introduction video [^7].
 
 # Methodology
 
@@ -246,3 +247,5 @@ Experiments showed that our method is able to mitigate systematic errors induced
 [^5]: [Jupyter tutorial of our method for matching multi-epoch historical aerial images](https://colab.research.google.com/drive/1poEXIeKbPcJT_2hyQOBhzcj1EEhO8OgD)
 
 [^6]: [Jupyter tutorial of our method for matching multi-epoch historical images (aerial and satellite images mixed)](https://colab.research.google.com/drive/14okQ8bBhEZmy6EGRIQvazTqrN39oc_K5)
+
+[^7]: [Introduction video for "Feature matching for multi-epoch historical aerial images"](https://linktobeadded)
