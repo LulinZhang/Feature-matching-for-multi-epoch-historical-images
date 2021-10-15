@@ -15,19 +15,19 @@ title: "Feature matching for multi-epoch historical aerial images"
 
 # Introduction
 
-Historical imagery is characterized by high spatial resolution and stereoscopic acquisitions, providing a valuable resource for recovering 3D land-cover information. Accurate geo-referencing of diachronic historical images by means of self-calibration remains a bottleneck because of the difficulty to find sufficient amount of feature correspondences under evolving landscapes. As shown in Figures XX, YYY current *state-of-the-art* feature matching methods (including SIFT [^1] and SuperGlue [^2]) perfom well on images acquired within the same epoch (also refered to as intra-epoch). Yet, due to drastic scene changes and heterogeneous acquisition conditions, they underperform to find feature correspondences across different epochs (also referred to as inter-epoch), while our method [^3] is able to recover numerous and accurate correspondences.
+Historical imagery is characterized by high spatial resolution and stereoscopic acquisitions, providing a valuable resource for recovering 3D land-cover information. Accurate geo-referencing of diachronic historical images by means of self-calibration remains a bottleneck because of the difficulty to find sufficient amount of feature correspondences under evolving landscapes. As shown in Figure 1 (c-d), current *state-of-the-art* feature matching methods (including SIFT [^1] and SuperGlue [^2]) perfom well on images acquired within the same epoch (also refered to as intra-epoch). Yet, due to drastic scene changes and heterogeneous acquisition conditions, they underperform to find feature correspondences across different epochs (also referred to as inter-epoch) Figure 1 (e-f), while our method [^3] is able to recover numerous and accurate correspondences Figure 1 (g).
 
-|         Intra-epoch image pair        | Inter-epoch image pair |
+|         (a) Intra-epoch image pair        | (b) Inter-epoch image pair |
 |-|-|
 | <p align="center"> <img src="images/intra.png" width="400"> </p> | <p align="center"> <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="400"> </p> |
-|   <p align="center">   ***SIFT*** : good correspondences </p> |      <p align="center">    ***SIFT*** : 0 correspondences  </p> |
+|   <p align="center">   (c) ***SIFT*** : good correspondences </p> |      <p align="center">    (d) ***SIFT*** : 0 correspondences  </p> |
 | <p align="center"> <img src="images/Homol-SIFT_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400"> </p> | <p align="center">  <img src="images/Homol-SIFT-3DRANSAC-CrossCorrelation_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1954-03-06__C3544-0211_1954_CDP866_0632.tif.png" width="400"> </p> |
-|  <p align="center">   ***SuperGLUE*** : good correspondences </p>     |   <p align="center">   ***SuperGLUE*** : inaccurate correspondences  </p>       |
+|  <p align="center">   (e) ***SuperGlue*** : good correspondences </p>     |   <p align="center">   (f) ***SuperGlue*** : inaccurate correspondences  </p>       |
 | <p align="center"> <img src="images/Homol-SuperGlue_OIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1407.tifOIS-Reech_IGNF_PVA_1-0__1970__C3544-0221_1970_CDP6452_1408.tif.png" width="400"> </p> | <p align="center">  <img src="images/Selection_533.png" width="300"> </p> |
-| | <p align="center"> ***Ours*** : accurate correspondences </p> |
+| | <p align="center"> (g) ***Ours*** : accurate correspondences </p> |
 | |<p align="center"> <img src="images/Selection_534.png" width="300"> </p>|
 
-<p align="center"> Figure XXX. SIFT, SuperGlue and Our features computed on an intra-epoch (left) and inter-epoch (right) image pair. The blue line connecting 2 points from the left and right images represent the feature correspondences. </p> 
+<p align="center"> Figure 1. SIFT, SuperGlue and Our features computed on an intra-epoch (left) and inter-epoch (right) image pair. The blue line connecting 2 points from the left and right images represent the feature correspondences. </p> 
 
 In this work we propose a fully automatic approach to computing dense and robust inter-epoch feature correspondences. Our method consists of a rough co-registration by finding feature correspondences between DSMs derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:
 * Exploiting rough-to-precise matching strategy to reduce ambiguity: (1) use depth information to get robust rough co-registration as the 3D landscape often stays globally stable over time; (2) use co-registered depth information for prediction to narrow down search space.
@@ -42,7 +42,7 @@ In the follwoing the methodology as well as experiments are demenstrated. If you
 </p>
 
 <p align="center">
-Figure. Full processing workflow
+Figure 2. Full processing workflow
 </p>
 
 Our pipeline consists of 3 parts of processing: intra-epoch, inter-epoch and combined.
@@ -66,7 +66,7 @@ As SuperGlue provides unsatisfactory result on large images and it is not invari
 </p>
 
 <p align="center">
-Figure. Workflow of the rough co-registration
+Figure 3. Workflow of the rough co-registration
 </p>
 
 <p align="center">
@@ -74,7 +74,7 @@ Figure. Workflow of the rough co-registration
 </p>
 
 <p align="center">
-Figure. Four rotation hypotheses
+Figure 4. Four rotation hypotheses
 </p>
 
 > Note: For more details, please refer to our publication [^3].
@@ -86,7 +86,7 @@ We display an example to show how our tiling scheme improved the performance of 
 </p>
 
 <p align="center">
-Figure. Multi-epoch DSM pair (Left and right are DSMs of epoch 1954 and 2014 individually. Red rectangles indicate the overlapping area.)
+Figure 5. Multi-epoch DSM pair (Left and right are DSMs of epoch 1954 and 2014 individually. Red rectangles indicate the overlapping area.)
 </p>
 
 <p align="center">
@@ -94,7 +94,7 @@ Figure. Multi-epoch DSM pair (Left and right are DSMs of epoch 1954 and 2014 ind
 </p>
 
 <p align="center">
-Figure. Correspondences of SuperGlue
+Figure 6. Correspondences of SuperGlue
 </p>
 
 <p align="center">
@@ -102,7 +102,7 @@ Figure. Correspondences of SuperGlue
 </p>
 
 <p align="center">
-Figure. Correspondences of ours
+Figure 7. Correspondences of ours
 </p>
 
 As can be seen, the correspondences of SuperGlue are all wrong, while ours (SuperGlue combined with tiling scheme, followed by RANSAC) recovered a large number of good correspondences.
@@ -123,7 +123,7 @@ Patch matching is designed for deep learning methods like SuperGlue. We use the 
 </p>
 
 <p align="center">
-Figure. Guided matching and patch matching
+Figure 8. Guided matching and patch matching
 </p>
 
 ### Get enhanced inter-epoch correspondences
@@ -136,7 +136,7 @@ spatial similarity model.
 </p>
 
 <p align="center">
-Figure. 3D RANSAC
+Figure 9. 3D RANSAC
 </p>
 
 ### Get final inter-epoch correspondences
@@ -150,16 +150,20 @@ The rectangles in the picture below represent the cross-correlation window, fals
 </p>
 
 <p align="center">
-Figure. Cross-correlation
+Figure 10. Cross-correlation
 </p>
 
 # Experiment
 
 We test our method on a dataset with drastic scene changes displayed below:
 
-|         Epoch 1954        |         Epoch 2014        |
+|         (a) Epoch 1954        |         (b) Epoch 2014        |
 |-|-|
 | <p align="center">  <img src="images/1954.png" width="450"> </p> |<p align="center"> <img src="images/2014.png" width="450"> </p> |
+
+<p align="center">
+Figure 11. Dataset with drastic scene changes
+</p>
 
 We recover inter-epoch correspondences and refine the image orientations, then calculate DSMs in each epoch and adopt the conception of DoD (Difference of DSMs) for evaluation.
 
@@ -170,7 +174,7 @@ Ideally, the DoD should only display the scene changes as shown in the picture b
 </p>
 
 <p align="center">
-Figure. DoD in ideal case
+Figure 12. DoD in ideal case
 </p>
 
 But in real case, a doom effect as shown below would appear due to poorly estimated camera parameters.
@@ -180,7 +184,7 @@ But in real case, a doom effect as shown below would appear due to poorly estima
 </p>
 
 <p align="center">
-Figure. DoD in real case
+Figure 13. DoD in real case
 </p>
 
 We display 4 sets of DoDs below.
@@ -204,7 +208,7 @@ In the DoD of (3) and (4), the doom effect is effectively mitigated while the re
 </p>
 
 <p align="center">
-Figure. DoD in real case
+Figure 14. DoD in real case
 </p>
 
 A subregion of scene evolution is displayed below, a seaport as well as several new buildings emerged and are well detected with our method.
@@ -214,7 +218,7 @@ A subregion of scene evolution is displayed below, a seaport as well as several 
 </p>
 
 <p align="center">
-Figure. Scene evolution
+Figure 15. Scene evolution
 </p>
 
 # Conclusion
