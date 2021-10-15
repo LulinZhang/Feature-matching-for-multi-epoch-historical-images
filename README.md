@@ -37,7 +37,7 @@ In the follwoing the methodology as well as experiments are demenstrated.
 
 If you are interested in using our method, please refer to the source code of MicMac Github [^4], as well as 2 jupyter tutorials [^5] [^6] to familiarize you with the usage. We also provide an introduction video [^7].
 
-The datasets used in our publication [^3] will be soon published in an open-access repository.
+The datasets in our publication [^3] will be soon published in an open-access repository.
 
 # Methodology
 
