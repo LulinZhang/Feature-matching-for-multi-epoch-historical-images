@@ -237,7 +237,7 @@ As multi-epoch images often display very different appearance, it helps to explo
 SIFT are incoherent with prediction by depth.
 * filter candidate matches by projecting them onto depth to get 3D points, followed by running RANSAC on 3D Helmert transformation model.
 
-## 2. Deep learning feature matching methods underperform on high resolution images, it helps with tiling scheme.
+## 2. Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.
 
 Deep learning feature matching methods often provide inaccurate features for different reasons:
 * network trained on small images in order to perform in real-time, with SuperGlue as a representative;
