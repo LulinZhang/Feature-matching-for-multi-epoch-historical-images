@@ -229,31 +229,6 @@ Experiments showed that our method is able to mitigate systematic errors induced
 
 > ewelina.rupnik@ign.fr
 
-
-<p align="center">
-  <img src="images/flowchart.png" width="800">
-</p>
-
-<p align="center">
-(a) Full processing workflow
-</p>
-
-<p align="center">
-  <img src="images/tilematch.png" width="800">
-</p>
-
-<p align="center">
-(b) Workflow of the rough co-registration
-</p>
-
-<p align="center">
-  <img src="images/rotation.png" width="800">
-</p>
-
-<p align="center">
-(c) Four rotation hypotheses
-</p>
-
 # Reference
 
 [^1]: D. G. Lowe, Distinctive image features from scale-invariant keypoints, International journal of computer vision 60 (2) (2004) 91–110.
