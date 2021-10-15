@@ -109,7 +109,7 @@ As can be seen, the correspondences of SuperGlue are all wrong, while ours (Supe
 
 ## Precise matching
 
-We perform a precise matching under the guidance of the co-registered DSM.
+We perform a precise matching under the guidance of the co-registered DSMs.
 
 We provide 2 options (guided matching and patch matching) to get tentative inter-epoch correspondences, then remove the outliers with 3D RANSAC and cross correlation.
 
