@@ -49,13 +49,9 @@ The datasets in our publication [^3] will be soon published in an open-access re
 Figure 2. Full processing workflow
 </p>
 
-Our pipeline consists of 3 parts of processing: intra-epoch, inter-epoch and combined.
+Our pipeline consists of 3 parts of processing: intra-epoch, inter-epoch and combined. For the sake of simplicity, we only exhibit the processing flow of two epochs, however, it can be easily extended to more epochs.
 
-In the intra-epoch part, we process each epoch individually to get the image orientations and DSM.
-
-The inter-epoch part is the key point of our pipeline. It is a rough-to-precise matching strategy.
-
-In the combined processing, we use the correspondences to refine the orientations.
+The inter-epoch part is the key point of our pipeline. It matches the DSMs resulted from intra-epoch processing to roughly co-register 2 epochs, and use it to narrow down the searching space for precise matching. The resulted correspondences will be used to refine the orientations in the combined processing.
 
 The details of the inter-epoch processing are explained below:
 
@@ -230,6 +226,25 @@ Figure 15. Scene evolution
 Our method exploited rough-to-precise matching strategy to reduce ambiguity with the help of the depth information. We also introduced tiling scheme and checking scale and rotation to upscale the matching performance.
 
 Experiments showed that our method is able to mitigate systematic errors induced by poorly estimated camera, and it is robust to drastic scene changes.
+
+# Lesson learned
+
+## 1. It is useful to adopt *a priori* to reduce ambiguity.
+
+As multi-epoch images often display very different appearance, it helps to narrow down the searching space based on *a priori* such as depth information extracted from single epoch in as many ways as possible. There are at least 3 ways to take advantage of depth information:
+* matching depth image for rough co-reigstration.
+* use co-registered depth information to remove scale and rotation difference in 2 ways: (1) get patch pairs free of scale and rotation difference for deep learning matching methods such as SuperGlue; (2) reject candidate matches whose scales and rotations are incoherent with prediction.
+* filter candidate matches by projecting them onto depth to get 3D points, followed by running RANSAC on 3D Helmert transformation model.
+
+## 2. Deep learning feature matching methods underperform on high resolution images, it helps with tiling scheme.
+
+Deep learning feature matching methods often provide inaccurate features for different reasons:
+* network trained on small images in order to perform in real-time, with SuperGlue as a representative;
+* features extracted on CNN feature maps with limited spatial resolution, with D2-Net as a representative.
+
+We can obtain accurate features on high resolution images by cropping the input images into tiles, and match the tile pairs in 2 possible ways:
+* If no *a priori* is available, it is neccessary to matching all the potential tile pairs;
+* If *a priori* is available (e.g. the depths are roughly co-registered), it can be used to predict the tile from one image to another.
 
 #  Contact
 
