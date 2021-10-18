@@ -90,11 +90,12 @@ We also considered using orthophotos. However, fewer matches will be found becau
 
 We display an example to show how our tiling scheme improved the performance of SuperGlue, as well as the comparison between orthophotos and DSMs:
 
-|Multi-epoch orthophoto pair|Multi-epoch DSM pair|
+|(a) Multi-epoch orthophoto pair|(b) Multi-epoch DSM pair|
+|-|-|
 |<p align="center"> <img src="images/DOMoverlapping.png" width="600"></p>|<p align="center"> <img src="images/DSMoverlapping.png" width="600"></p>|
-|Our correspondences|Our correspondences|
+|(c) Our correspondences|(d) Our correspondences|
 |<p align="center"> <img src="images/DOM-Ours.png" width="600"> </p>|<p align="center"> <img src="images/DSM-Ours.png" width="600"> </p>|
-|SuperGlue correspondences|SuperGlue correspondences|
+|(e) SuperGlue correspondences|(f) SuperGlue correspondences|
 |<p align="center"> <img src="images/DOM-SuperGlue.jpg" width="600"> </p>|<p align="center"> <img src="images/DSM-SuperGlue.png" width="600"> </p>|
 <p align="center">Figure 5. Comparison of co-registration with orthophotos and DSMs
 
