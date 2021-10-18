@@ -30,9 +30,9 @@ Historical imagery is characterized by high spatial resolution and stereoscopic 
 
 <p align="center"> Figure 1. SIFT, SuperGlue and Our features computed on an intra-epoch (left) and inter-epoch (right) image pair. The blue line connecting 2 points from the left and right images represent the feature correspondences. </p> 
 
-In this work we propose a fully automatic approach to computing robust inter-epoch feature correspondences. Our method consists of a rough co-registration by finding feature correspondences between DSMs derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:
+In this work we propose a fully automatic approach to computing robust inter-epoch feature correspondences. Our method consists of a rough co-registration by finding feature correspondences between DSMs (Digital Surface Model) derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:
 * Exploiting rough-to-precise matching strategy to reduce ambiguity: (1) use depth information to get robust rough co-registration as the 3D landscape often stays globally stable over time; (2) use co-registered depth information for prediction to narrow down search space.
-* Upscale the matching performance for both hand-crafted and deep learning methods: (1) for hand-crafted method, check scale and rotation of keypoints to reduce ambiguity; (2) for deep learning method, introduce tiling scheme to improve precision for high resolution images.
+* Upscale the matching performance for both hand-crafted and deep learning methods: (1) for hand-crafted method, check scale and rotation of keypoints; (2) for deep learning method, introduce tiling scheme to improve precision for high resolution images.
 
 In the follwoing the methodology as well as experiments are demenstrated. 
 
