@@ -85,6 +85,7 @@ We provide 2 contributions to get robust result:
 * It implicitly enables a follow-up search for globally consistent inliers;
 * It decreases the combinatorial complexity caused by rotation ambiguity;
 * Even under important scene changes, DSMs generally provide stable information over time.
+
 We also considered using orthophotos. However, fewer matches will be found because the scene radiometry change is more pronounced than the 3D landscape change.
 
 We display an example to show how our tiling scheme improved the performance of SuperGlue, as well as the comparison between orthophotos and DSMs:
