@@ -58,9 +58,7 @@ The details of the inter-epoch processing are explained below:
 
 ## Rough co-registration
 
-Based on the image orientations and DSM from each epoch, we first match the DSMs to roughly co-register the 2 epochs.
-
-As SuperGlue provides unsatisfactory result on large images and it is not invariant to rotations larger than 45◦, we introduce tiling scheme and rotation hypotheses to improve the performance of SuperGlue.
+Based on the image orientations and DSM from each epoch, we match the DSMs to roughly co-register the 2 epochs. The workflow is displayed below.
 
 <p align="center">
   <img src="images/tilematch.png" width="800">
@@ -78,35 +76,30 @@ Figure 3. Workflow of the rough co-registration
 Figure 4. Four rotation hypotheses
 </p>
 
-> Note: For more details, please refer to our publication [^3].
+We provide 2 contributions to get robust result:
 
-We display an example to show how our tiling scheme improved the performance of SuperGlue:
+(1) We introduce tiling scheme and rotation hypotheses to improve the matching performance, as SuperGlue provides unsatisfactory result on large images and it is not invariant to rotations larger than 45◦.
 
-<p align="center">
-  <img src="images/DSMoverlapping.png" width="600">
-</p>
+(2) We choose matching DSMs instead of original RGB images for the following merits:
+* Redundancy caused by the forward and side overlapping areas is removed;
+* It implicitly enables a follow-up search for globally consistent inliers;
+* It decreases the combinatorial complexity caused by rotation ambiguity;
+* Even under important scene changes, DSMs generally provide stable information over time.
+We also considered using orthophotos. However, fewer matches will be found because the scene radiometry change is more pronounced than the 3D landscape change.
 
-<p align="center">
-Figure 5. Multi-epoch DSM pair (Left and right are DSMs of epoch 1954 and 2014 individually. Red rectangles indicate the overlapping area.)
-</p>
+We display an example to show how our tiling scheme improved the performance of SuperGlue, as well as the comparison between orthophotos and DSMs:
 
-<p align="center">
-  <img src="images/DSM-SuperGlue.png" width="600">
-</p>
+|Multi-epoch orthophoto pair|Multi-epoch DSM pair|
+|<p align="center"> <img src="images/DOMoverlapping.png" width="600"></p>|<p align="center"> <img src="images/DSMoverlapping.png" width="600"></p>|
+|Our correspondences|Our correspondences|
+|<p align="center"> <img src="images/DOM-Ours.png" width="600"> </p>|<p align="center"> <img src="images/DSM-Ours.png" width="600"> </p>|
+|SuperGlue correspondences|SuperGlue correspondences|
+|<p align="center"> <img src="images/DOM-SuperGlue.jpg" width="600"> </p>|<p align="center"> <img src="images/DSM-SuperGlue.png" width="600"> </p>|
+<p align="center">Figure 5. Comparison of co-registration with orthophotos and DSMs
 
-<p align="center">
-Figure 6. Correspondences of SuperGlue
-</p>
+As can be seen, (1) for both orthophotos and DSMs, the correspondences of SuperGlue are all wrong, while ours (SuperGlue combined with tiling scheme, followed by RANSAC) recovered a large number of good correspondences. (2) DSMs have more inliers than orthophotos, because there is much less perceived change in the DSMs than there is in the orthophotos.
 
-<p align="center">
-  <img src="images/DSM-Ours.png" width="600">
-</p>
-
-<p align="center">
-Figure 7. Correspondences of ours
-</p>
-
-As can be seen, the correspondences of SuperGlue are all wrong, while ours (SuperGlue combined with tiling scheme, followed by RANSAC) recovered a large number of good correspondences.
+ > Note: For more details, please refer to our publication [^3].
 
 ## Precise matching
 
