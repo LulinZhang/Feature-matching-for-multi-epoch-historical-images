@@ -93,11 +93,11 @@ We display an example to show how our tiling scheme improved the performance of 
 |(a) Multi-epoch orthophoto pair|(b) Multi-epoch DSM pair|
 |-|-|
 |<p align="center"> <img src="images/DOMoverlapping.png" width="600"></p>|<p align="center"> <img src="images/DSMoverlapping.png" width="600"></p>|
-|<p align="center">(c) SuperGlue correspondences</p>|<p align="center">(d) SuperGlue correspondences</p>|
+|<p align="center">(c) SuperGlue correspondences on orthophotos</p>|<p align="center">(d) SuperGlue correspondences on DSMs</p>|
 |<p align="center"> <img src="images/DOM-SuperGlue.jpg" width="600"> </p>|<p align="center"> <img src="images/DSM-SuperGlue.png" width="600"> </p>|
-|<p align="center">(e) Our correspondences</p>|<p align="center">(f) Our correspondences</p>|
+|<p align="center">(e) Our correspondences on orthophotos</p>|<p align="center">(f) Our correspondences on DSMs</p>|
 |<p align="center"> <img src="images/DOM-Ours.png" width="600"> </p>|<p align="center"> <img src="images/DSM-Ours.png" width="600"> </p>|
-<p align="center">Figure 5. Comparison of co-registration with orthophotos and DSMs
+<p align="center">Figure 5. Comparison of co-registration with orthophotos and DSMs. (a-b) Red rectangles indicate the overlapping area.
 
 As can be seen, (1) for both orthophotos and DSMs, the correspondences of SuperGlue are all wrong, while ours (SuperGlue combined with tiling scheme, followed by RANSAC) recovered a large number of good correspondences. (2) DSMs have more inliers than orthophotos, because there is much less perceived change in the DSMs than there is in the orthophotos.
 
