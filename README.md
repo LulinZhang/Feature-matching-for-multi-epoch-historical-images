@@ -30,15 +30,11 @@ Historical imagery is characterized by high spatial resolution and stereoscopic 
 
 <p align="center"> Figure 1. SIFT, SuperGlue and Our features computed on an intra-epoch (left) and inter-epoch (right) image pair. The blue line connecting 2 points from the left and right images represent the feature correspondences. </p> 
 
-In this work we propose a fully automatic approach to computing robust inter-epoch feature correspondences. Our method consists of a rough co-registration by finding feature correspondences between DSMs (Digital Surface Model) derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:
-* Exploiting rough-to-precise matching strategy to reduce ambiguity: (1) use depth information to get robust rough co-registration as the 3D landscape often stays globally stable over time; (2) use co-registered depth information for prediction to narrow down search space.
-* Upscale the matching performance for both hand-crafted and deep learning methods: (1) for hand-crafted method, check scale and rotation of keypoints; (2) for deep learning method, introduce tiling scheme to improve precision for high resolution images.
+We propose a fully automatic approach to computing robust inter-epoch feature correspondences. Our method consists of two steps: a rough co-registration by finding feature correspondences between DSMs (Digital Surface Model) derived within single epochs, and a precise feature matching on original RGB images. Our main contributions include:
+* Rough-to-precise matching strategy that helps to drastically reduce ambiguity. In particular, we use the depth information to roughly co-register our epochs. The 3D landscape is globally stable over time and provides sufficient correspondences *through time*. Once co-registered, we levarage the 3D *a priori* to narrow down the search space in precise matching. 
+* Upscaling of the learning based feature matching algorithms to high resolution imagery. To do that, we introduced an image tiling scheme.
 
-In the follwoing the methodology as well as experiments are demenstrated. 
-
-If you are interested in using our method, please refer to the source code of MicMac Github [^4], as well as 2 jupyter tutorials [^5] [^6] to familiarize you with the usage. We also provide an introduction video [^7].
-
-The datasets in our publication [^3] will be soon published in an open-access repository.
+In the following we present the methodology and some experiments. If you are interested in using our method, please refer to the source code of MicMac Github [^4], as well as 2 jupyter tutorials [^5] [^6]. We also provide an introduction video [^7]. The datasets used in our publication [^3] will be soon published in an open-access repository.
 
 # Methodology
 
@@ -50,11 +46,8 @@ The datasets in our publication [^3] will be soon published in an open-access re
 Figure 2. Full processing workflow
 </p>
 
-Our pipeline consists of 3 parts of processing: intra-epoch, inter-epoch and combined. For the sake of simplicity, we only exhibit the processing flow of two epochs, however, it can be easily extended to more epochs.
+Our pipeline consists of 3 parts of processing: ***intra-epoch***, ***inter-epoch*** and combined. For the sake of simplicity, we only exhibit the processing flow of two epochs, however, it can be easily extended to more epochs. The inter-epoch part contains the key developments of our pipeline. It matches the DSMs resulted from intra-epoch processing to roughly co-register 2 epochs, and uses it to narrow down the searching space for precise matching. The resulting correspondences are then used to refine the orientations in the combined processing (i.e., bundle adjustement).
 
-The inter-epoch part is the key point of our pipeline. It matches the DSMs resulted from intra-epoch processing to roughly co-register 2 epochs, and use it to narrow down the searching space for precise matching. The resulted correspondences will be used to refine the orientations in the combined processing.
-
-The details of the inter-epoch processing are explained below:
 
 ## Rough co-registration
 
