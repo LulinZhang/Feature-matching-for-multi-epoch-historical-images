@@ -46,13 +46,12 @@ In the following we present the methodology and some experiments. If you are int
 Figure 2. Full processing workflow
 </p>
 
-Our pipeline consists of 3 parts of processing: ***intra-epoch***, ***inter-epoch*** and combined. For the sake of simplicity, we only exhibit the processing flow of two epochs, however, it can be easily extended to more epochs. The inter-epoch part contains the key developments of our pipeline. It matches the DSMs resulted from intra-epoch processing to roughly co-register 2 epochs, and uses it to narrow down the searching space for precise matching. The resulting correspondences are then used to refine the orientations in the combined processing (i.e., bundle adjustement).
+Our pipeline consists of 3 parts: ***intra-epoch***, ***inter-epoch*** and ***combined*** (see Figure 2). For the sake of simplicity, we only exhibit the processing flow of two epochs, however, it can be easily extended to more epochs. The inter-epoch part contains the key developments. It matches the DSMs obtained in intra-epoch processing to roughly co-register 2 epochs, and uses it to narrow down the searching space for precise matching. The final correspondences are then used to refine the orientations in the combined processing (i.e., bundle adjustement).
 
 
 ## Rough co-registration
 
-Based on the image orientations and DSM from each epoch, we match the DSMs to roughly co-register the 2 epochs. The workflow is displayed below.
-
+Based on the image orientations and DSM from each epoch, we match the DSMs to roughly co-register the 2 epochs, as shown in Figure 3.
 <p align="center">
   <img src="images/tilematch.png" width="800">
 </p>
@@ -69,19 +68,18 @@ Figure 3. Workflow of the rough co-registration
 Figure 4. Four rotation hypotheses
 </p>
 
-We provide 2 contributions to get robust result:
+To increase the robustness of our correspondences, we do the following:
 
-(1) We introduce tiling scheme and rotation hypotheses to improve the matching performance, as SuperGlue provides unsatisfactory result on large images and it is not invariant to rotations larger than 45◦.
+(1) We introduce a tiling scheme and rotation hypotheses. The classical SuperGlue provides unsatisfactory result when applied to large images and it is not invariant to rotations larger than 45◦.
 
-(2) We choose matching DSMs instead of original RGB images for the following merits:
+(2) We choose matching DSMs instead of original RGB images, and it is motivated by several merits:
 * Redundancy caused by the forward and side overlapping areas is removed;
 * It implicitly enables a follow-up search for globally consistent inliers;
 * It decreases the combinatorial complexity caused by rotation ambiguity;
 * Even under important scene changes, DSMs generally provide stable information over time.
 
-We also considered using orthophotos, however, fewer matches are found because the scene radiometry change is more pronounced than the 3D landscape change.
+We also considered using orthophotos for the rough co-registration stage. Experiments have demonstrated that fewer matches can be retrieved. This is due to the fact that the scene's radiometry changes are more pronounced than the 3D landscape's evolution. Figure 5 presents a comparison of feature matching performed on RGB images and DSMs (more inliers in DSMs). It also shows the effectiveness of our strategy (SuperGlue combined with tiling scheme, followed by RANSAC) compared to the traditional SuperGlue.
 
-We display an example to show how our tiling scheme improved the performance of SuperGlue, as well as the comparison between orthophotos and DSMs:
 
 |(a) Multi-epoch orthophoto pair|(b) Multi-epoch DSM pair|
 |-|-|
@@ -91,8 +89,6 @@ We display an example to show how our tiling scheme improved the performance of 
 |<p align="center">(e) Our correspondences on orthophotos</p>|<p align="center">(f) Our correspondences on DSMs</p>|
 |<p align="center"> <img src="images/DOM-Ours.png" width="600"> </p>|<p align="center"> <img src="images/DSM-Ours.png" width="600"> </p>|
 <p align="center">Figure 5. Comparison of co-registration with orthophotos and DSMs. (a-b) Red rectangles indicate the overlapping area.
-
-As can be seen, (1) for both orthophotos and DSMs, the correspondences of SuperGlue are all wrong, while ours (SuperGlue combined with tiling scheme, followed by RANSAC) recovered a large number of good correspondences. (2) DSMs have more inliers than orthophotos, because there is much less perceived change in the DSMs than there is in the orthophotos.
 
  > Note: For more details, please refer to our publication [^3].
 
