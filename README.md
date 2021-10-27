@@ -36,6 +36,19 @@ We propose a fully automatic approach to computing robust inter-epoch feature co
 
 In the following we present the methodology and some experiments. If you are interested in using our method, please refer to the source code of MicMac Github [^4], as well as 2 jupyter tutorials [^5] [^6]. We also provide an introduction video [^7]. The datasets used in our publication [^3] will be soon published in an open-access repository.
 
+# Observation and motivation
+
+|         (a) Image 1971        | (b) Image 2015 |
+|-|-|
+| <p align="center"> <img src="images/AppearanceChangeRGBL.png" width="400"> </p> | <p align="center"> <img src="images/AppearanceChangeRGBR.png" width="400"> </p> |
+|   <p align="center">   (c) DSM 1971 </p> |      <p align="center">    (d) DSM 2015  </p> |
+| <p align="center"> <img src="images/AppearanceChangeDSML.png" width="400"> </p> | <p align="center"> <img src="images/AppearanceChangeDSMR.png" width="400"> </p> |
+|   <p align="center">   (e) Image 1991 </p> |      <p align="center">    (f) Image 1994  </p> |
+| <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="400"> </p> | <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="400"> </p> |
+|   <p align="center">   (g) DSM 1991 </p> |      <p align="center">    (h) DSM 1994  </p> |
+| <p align="center"> <img src="images/PoorlyTexturedRGBL.png" width="400"> </p> | <p align="center"> <img src="images/PoorlyTexturedRGBL.png" width="400"> </p> |
+
+
 # Methodology
 
 <p align="center">
