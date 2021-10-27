@@ -147,9 +147,7 @@ We test our method on a dataset with drastic scene changes displayed below:
 Figure 11. Dataset with drastic scene changes
 </p>
 
-We recover inter-epoch correspondences and refine the image orientations, then calculate DSMs in each epoch and adopt the conception of DoD (Difference of DSMs) for evaluation.
-
-Ideally, the DoD should only display the scene changes as shown in the picture below.
+We recover inter-epoch correspondences and refine the image orientations, then calculate DSMs in each epoch and adopt the conception of DoD (Difference of DSMs) for evaluation. Ideally, the DoD should only display the scene changes as shown in the picture below.
 
 <p align="center">
   <img src="images/IdealDoD.png" width="600">
