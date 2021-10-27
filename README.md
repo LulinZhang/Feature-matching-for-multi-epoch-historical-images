@@ -49,9 +49,9 @@ In the following we present the methodology and some experiments. If you are int
 
 |   <p align="center">   (e) Image 1991 </p> |      <p align="center">    (f) Image 1994  </p> |
 |-|-|
-| <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="300"> </p> | <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="300"> </p> |
-|   <p align="center">   (g) DSM 1991 </p> |      <p align="center">    (h) DSM 1994  </p> |
 | <p align="center"> <img src="images/PoorlyTexturedRGBL.png" width="300"> </p> | <p align="center"> <img src="images/PoorlyTexturedRGBL.png" width="300"> </p> |
+|   <p align="center">   (g) DSM 1991 </p> |      <p align="center">    (h) DSM 1994  </p> |
+| <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="300"> </p> | <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="300"> </p> |
 
 <p align="center"> Figure 3. The same zone observed in different time. The images are poorly textured therefore hard to be matched, while the DSMs are distinctive. </p> 
 
