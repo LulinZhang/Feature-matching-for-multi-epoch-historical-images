@@ -72,13 +72,13 @@ To increase the robustness of our correspondences, we do the following:
 
 (1) We introduce a tiling scheme and rotation hypotheses. The classical SuperGlue provides unsatisfactory result when applied to large images and it is not invariant to rotations larger than 45◦.
 
-(2) We choose matching DSMs instead of original RGB images, and it is motivated by several merits:
+(2) We choose matching DSMs over original RGB images, and it is motivated by several merits:
 * Redundancy caused by the forward and side overlapping areas is removed;
 * It implicitly enables a follow-up search for globally consistent inliers;
 * It decreases the combinatorial complexity caused by rotation ambiguity;
 * Even under important scene changes, DSMs generally provide stable information over time.
 
-We also considered using orthophotos for the rough co-registration stage. Experiments have demonstrated that fewer matches can be retrieved. This is due to the fact that the scene's radiometry changes are more pronounced than the 3D landscape's evolution. Figure 5 presents a comparison of feature matching performed on RGB images and DSMs (more inliers in DSMs). It also shows the effectiveness of our strategy (SuperGlue combined with tiling scheme, followed by RANSAC) compared to the traditional SuperGlue.
+However, we also considered using orthophotos for the rough co-registration stage. Experiments have demonstrated that fewer matches can be retrieved. This is due to the fact that the scene's radiometry changes are more pronounced than the 3D landscape's evolution. Figure 5 presents a comparison of feature matching performed on RGB images and DSMs (more inliers in DSMs). It also shows the effectiveness of our strategy (SuperGlue combined with tiling scheme, followed by RANSAC) compared to the traditional SuperGlue.
 
 
 |(a) Multi-epoch orthophoto pair|(b) Multi-epoch DSM pair|
@@ -174,17 +174,10 @@ Figure 13. DoD in real case
 
 We display 4 sets of DoDs below.
 
-(1) DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. 
-
-This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated;
-
-(2) DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. 
-
-The systematic error is mitigated thanks to our dense correspondences in DSMs;
-
-(3) DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching;
-
-(4) DoD resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
+* (1) DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated;
+* (2) DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. The systematic error is mitigated thanks to our dense correspondences in DSMs;
+* (3) DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching;
+* (4) DoD resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
 
 In the DoD of (3) and (4), the doom effect is effectively mitigated while the real scene changes are kept, thanks to our numerous and precise inter-epoch correspondences.
 
@@ -225,10 +218,10 @@ SIFT are incoherent with prediction by depth.
 ## 2. Deep learning feature matching methods underperform on high resolution images, it can be improved with tiling scheme.
 
 Deep learning feature matching methods often provide inaccurate features for different reasons:
-* network trained on small images in order to perform in real-time, with SuperGlue as a representative;
-* features extracted on CNN feature maps with limited spatial resolution, with D2-Net as a representative.
+* network trained on small images in order to perform in real-time, for example SuperGlue;
+* features extracted on CNN feature maps with limited spatial resolution, for example D2-Net.
 
-We can obtain accurate features on high resolution images by cropping the input images into tiles, and match the tile pairs in 2 possible ways:
+We can obtain accurate features on high resolution images by tiling the input images, and matching the tile pairs in 2 possible ways:
 * If no *a priori* is available, it is neccessary to match all the potential tile pairs;
 * If *a priori* is available (e.g. the depths are roughly co-registered), it can be used to predict the tile from one image to another.
 
