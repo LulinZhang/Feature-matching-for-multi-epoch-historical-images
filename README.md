@@ -94,14 +94,12 @@ However, we also considered using orthophotos for the rough co-registration stag
 
 ## Precise matching
 
-We perform a precise matching under the guidance of the co-registered DSMs.
-
-We provide 2 options (guided matching and patch matching) to get tentative inter-epoch correspondences, then remove the outliers with 3D RANSAC and cross correlation.
+We perform a precise matching under the guidance of the co-registered DSMs. 2 options (guided matching and patch matching) are provide to get tentative inter-epoch correspondences, followed by removing the outliers with 3D RANSAC and cross correlation.
 
 ### Get tentative inter-epoch correspondences
-Guided matching is designed for hand-crafted methods like SIFT. We predict the keypoint locaiton from one epoch to another via the co-registered DSM, and search only the neighborhood of the predicted keypoint to reduce ambiguity.
 
-Patch matching is designed for deep learning methods like SuperGlue. We use the co-registered DSM to predict the corresponding patches, followed with resampling to remove the scale and rotation difference. The patch pair will be feed into SuperGlue to get tentative correspondences.
+* (1) Guided matching is designed for hand-crafted methods like SIFT. We predict the keypoint locaiton from one epoch to another via the co-registered DSM, and search only the neighborhood of the predicted keypoint to reduce ambiguity.
+* (2) Patch matching is designed for deep learning methods like SuperGlue. We use the co-registered DSM to predict the corresponding patches, followed with resampling to remove the scale and rotation difference. The patch pair will be feed into SuperGlue to get tentative correspondences.
 
 <p align="center">
   <img src="images/precisematch.png" width="800">
@@ -127,8 +125,7 @@ Figure 9. 3D RANSAC
 ### Get final inter-epoch correspondences
 
 We apply cross-correlation for final validation. Feature correspondences with their correlation scores below a predefined threshold
-are discarded.
-The rectangles in the picture below represent the cross-correlation window, false match (red) is eliminated, while true match (blue) is kept.
+are discarded. The rectangles in the picture below represent the cross-correlation window, false match (red) is eliminated, while true match (blue) is kept.
 
 <p align="center">
   <img src="images/tiept.png" width="400">
