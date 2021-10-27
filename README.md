@@ -38,16 +38,22 @@ In the following we present the methodology and some experiments. If you are int
 
 # Observation and motivation
 
+
 |         (a) Image 1971        | (b) Image 2015 |
 |-|-|
-| <p align="center"> <img src="images/AppearanceChangeRGBL.png" width="400"> </p> | <p align="center"> <img src="images/AppearanceChangeRGBR.png" width="400"> </p> |
+| <p align="center"> <img src="images/AppearanceChangeRGBL.png" width="300"> </p> | <p align="center"> <img src="images/AppearanceChangeRGBR.png" width="300"> </p> |
 |   <p align="center">   (c) DSM 1971 </p> |      <p align="center">    (d) DSM 2015  </p> |
-| <p align="center"> <img src="images/AppearanceChangeDSML.png" width="400"> </p> | <p align="center"> <img src="images/AppearanceChangeDSMR.png" width="400"> </p> |
-|   <p align="center">   (e) Image 1991 </p> |      <p align="center">    (f) Image 1994  </p> |
-| <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="400"> </p> | <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="400"> </p> |
-|   <p align="center">   (g) DSM 1991 </p> |      <p align="center">    (h) DSM 1994  </p> |
-| <p align="center"> <img src="images/PoorlyTexturedRGBL.png" width="400"> </p> | <p align="center"> <img src="images/PoorlyTexturedRGBL.png" width="400"> </p> |
+| <p align="center"> <img src="images/AppearanceChangeDSML.png" width="300"> </p> | <p align="center"> <img src="images/AppearanceChangeDSMR.png" width="300"> </p> |
 
+<p align="center"> Figure 2. The same zone observed in different time. The images changed a lot while the DSMs stayed stable over time. </p> 
+
+|   <p align="center">   (e) Image 1991 </p> |      <p align="center">    (f) Image 1994  </p> |
+|-|-|
+| <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="300"> </p> | <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="300"> </p> |
+|   <p align="center">   (g) DSM 1991 </p> |      <p align="center">    (h) DSM 1994  </p> |
+| <p align="center"> <img src="images/PoorlyTexturedRGBL.png" width="300"> </p> | <p align="center"> <img src="images/PoorlyTexturedRGBL.png" width="300"> </p> |
+
+<p align="center"> Figure 3. The same zone observed in different time. The images are poorly textured therefore hard to be matched, while the DSMs are distinctive. </p> 
 
 # Methodology
 
@@ -56,21 +62,21 @@ In the following we present the methodology and some experiments. If you are int
 </p>
 
 <p align="center">
-Figure 2. Full processing workflow
+Figure 4. Full processing workflow
 </p>
 
-Our pipeline consists of 3 parts: ***intra-epoch***, ***inter-epoch*** and ***combined*** (see Figure 2). For the sake of simplicity, we only exhibit the processing flow of two epochs, however, it can be easily extended to more epochs. The inter-epoch part contains the key developments. It matches the DSMs obtained in intra-epoch processing to roughly co-register 2 epochs, and uses it to narrow down the searching space for precise matching. The final correspondences are then used to refine the orientations in the combined processing (i.e., bundle adjustement).
+Our pipeline consists of 3 parts: ***intra-epoch***, ***inter-epoch*** and ***combined*** (see Figure 4). For the sake of simplicity, we only exhibit the processing flow of two epochs, however, it can be easily extended to more epochs. The inter-epoch part contains the key developments. It matches the DSMs obtained in intra-epoch processing to roughly co-register 2 epochs, and uses it to narrow down the searching space for precise matching. The final correspondences are then used to refine the orientations in the combined processing (i.e., bundle adjustement).
 
 
 ## Rough co-registration
 
-Based on the image orientations and DSM from each epoch, we match the DSMs to roughly co-register the 2 epochs, as shown in Figure 3.
+Based on the image orientations and DSM from each epoch, we match the DSMs to roughly co-register the 2 epochs, as shown in Figure 5.
 <p align="center">
   <img src="images/tilematch.png" width="800">
 </p>
 
 <p align="center">
-Figure 3. Workflow of the rough co-registration
+Figure 5. Workflow of the rough co-registration
 </p>
 
 <p align="center">
@@ -78,7 +84,7 @@ Figure 3. Workflow of the rough co-registration
 </p>
 
 <p align="center">
-Figure 4. Four rotation hypotheses
+Figure 6. Four rotation hypotheses
 </p>
 
 To increase the robustness of our correspondences, we do the following:
@@ -91,7 +97,7 @@ To increase the robustness of our correspondences, we do the following:
 * It decreases the combinatorial complexity caused by rotation ambiguity;
 * Even under important scene changes, DSMs generally provide stable information over time.
 
-However, we also considered using orthophotos for the rough co-registration stage. Experiments have demonstrated that fewer matches can be retrieved. This is due to the fact that the scene's radiometry changes are more pronounced than the 3D landscape's evolution. Figure 5 presents a comparison of feature matching performed on RGB images and DSMs (more inliers in DSMs). It also shows the effectiveness of our strategy (SuperGlue combined with tiling scheme, followed by RANSAC) compared to the traditional SuperGlue.
+However, we also considered using orthophotos for the rough co-registration stage. Experiments have demonstrated that fewer matches can be retrieved. This is due to the fact that the scene's radiometry changes are more pronounced than the 3D landscape's evolution. Figure 7 presents a comparison of feature matching performed on RGB images and DSMs (more inliers in DSMs). It also shows the effectiveness of our strategy (SuperGlue combined with tiling scheme, followed by RANSAC) compared to the traditional SuperGlue.
 
 
 |(a) Multi-epoch orthophoto pair|(b) Multi-epoch DSM pair|
@@ -101,7 +107,7 @@ However, we also considered using orthophotos for the rough co-registration stag
 |<p align="center"> <img src="images/DOM-SuperGlue.jpg" width="600"> </p>|<p align="center"> <img src="images/DSM-SuperGlue.png" width="600"> </p>|
 |<p align="center">(e) Our correspondences on orthophotos</p>|<p align="center">(f) Our correspondences on DSMs</p>|
 |<p align="center"> <img src="images/DOM-Ours.png" width="600"> </p>|<p align="center"> <img src="images/DSM-Ours.png" width="600"> </p>|
-<p align="center">Figure 5. Comparison of co-registration with orthophotos and DSMs. (a-b) Red rectangles indicate the overlapping area.
+<p align="center">Figure 7. Comparison of co-registration with orthophotos and DSMs. (a-b) Red rectangles indicate the overlapping area.
 
  > Note: For more details, please refer to our publication [^3].
 
