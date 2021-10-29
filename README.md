@@ -204,6 +204,14 @@ We display 4 sets of DoDs below.
 
 In the DoD of (3) and (4), the doom effect is effectively mitigated while the real scene changes are kept, thanks to our numerous and precise inter-epoch correspondences.
 
+<p align="center">
+  <img src="images/DoD.png" width="800">
+</p>
+
+<p align="center">
+Figure 14. DoD in real case
+</p>
+
 A subregion of scene evolution is displayed below, a seaport as well as several new buildings emerged and are well detected with our method.
 
 <p align="center">
