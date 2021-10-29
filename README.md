@@ -38,6 +38,9 @@ In the following we present the methodology and some experiments. If you are int
 
 # Observation and motivation
 
+The keypoint of our method is to use 3D geometry to guide matching. This idea comes from the observation that RGB images have the following shortcomings:
+* (1) Appearance changes over time (See Figure 2);
+* (2) Hard to match poorly textured areas (See Figure 3).
 
 |         (a) Image 1971        | (b) Image 2015 |
 |-|-|
@@ -54,6 +57,12 @@ In the following we present the methodology and some experiments. If you are int
 | <p align="center"> <img src="images/PoorlyTexturedDSML.png" width="300"> </p> | <p align="center"> <img src="images/PoorlyTexturedDSMR.png" width="300"> </p> |
 
 <p align="center"> Figure 3. The same zone observed in different time. The images are poorly textured therefore hard to be matched, while the DSMs are distinctive. </p> 
+
+Fortunately, 3D geometry such as DSM, makes up these shortcomings perfectly. Therefore, we designed a rough-to precise matching pipeline to take advantage of DSMs for multi-epoch image alignment by:
+* (1) Matching DSM for rough co-registration;
+* (2) Reducing ambiguity in precise matching.
+
+The details are presented in the next section.
 
 # Methodology
 
