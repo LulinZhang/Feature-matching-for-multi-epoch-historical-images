@@ -217,7 +217,7 @@ Figure 14. DoD in real case
 A subregion of scene evolution is displayed below, a seaport as well as several new buildings emerged and are well detected with our method.
 
 <p align="center">
-  <img src="images/sceneEvolution.png" width="300">
+  <img src="images/sceneEvolution.png" width="400">
 </p>
 
 <p align="center">
@@ -232,7 +232,7 @@ The dataset is mainly covered with mountain area and narrow urban zones along th
 We have two sets of images: pre-event acquired in 1991 and post-event acquired in 1995. In this dataset we are interested in localizing the earthquake fault.
 
 <p align="center">
-  <img src="images/Kobe-DOM.png" width="600">
+  <img src="images/Kobe-DOM.png" width="700">
 </p>
 
 <p align="center">
@@ -245,7 +245,7 @@ The forth and fifth ones are resulted from orientations refined in bundle adjust
 As can be seen, an up-lateral strike-slip movement along the sea is present in the forth and fifth colomns, which is coherent with the ground truth, but we can’t see the same signal in the second and thrid colomns. It means that the refined orientations are precise enough, thanks to our inter-epoch correspondences.
 
 <p align="center">
-  <img src="images/GroundDisplacement.png" width="600">
+  <img src="images/GroundDisplacement.png" width="700">
 </p>
 
 <p align="center">
