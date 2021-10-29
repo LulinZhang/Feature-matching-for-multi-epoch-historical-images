@@ -39,8 +39,8 @@ In the following we present the methodology and some experiments. If you are int
 # Observation and motivation
 
 The key idea of our method is to use 3D geometry to guide matching. This idea comes from the observation that RGB images have the following shortcomings:
-* (1) Appearance changes over time (See Figure 2);
-* (2) Hard to match poorly textured areas (See Figure 3).
+* (1) Appearance changes over time (see Figure 2);
+* (2) Hard to match poorly textured areas (see Figure 3).
 
 |         (a) Image 1971        | (b) Image 2015 |
 |-|-|
@@ -165,6 +165,8 @@ Figure 10. Cross-correlation
 
 # Experiment
 
+## Dataset with drastic scene changes
+
 We test our method on a dataset with drastic scene changes displayed below:
 
 |         (a) Epoch 1954        |         (b) Epoch 2014        |
@@ -215,12 +217,41 @@ Figure 14. DoD in real case
 A subregion of scene evolution is displayed below, a seaport as well as several new buildings emerged and are well detected with our method.
 
 <p align="center">
-  <img src="images/sceneEvolution.png" width="600">
+  <img src="images/sceneEvolution.png" width="300">
 </p>
 
 <p align="center">
 Figure 15. Scene evolution
 </p>
+
+## Dataset with earthquake
+
+We also applied our method on a dataset that witnessed an earthquake to see if our method is good enough for high precision ground survey. 
+It locates in the north of Awaji Island, Japan. The well-known Kobe earthquake happened here in January 1995. 
+The dataset is mainly covered with mountain area and narrow urban zones along the sea (see Figure 16).
+We have two sets of images: pre-event acquired in 1991 and post-event acquired in 1995. In this dataset we are interested in localizing the earthquake fault.
+
+<p align="center">
+  <img src="images/Kobe-DOM.png" width="600">
+</p>
+
+<p align="center">
+Figure 16. Scene demonstration
+</p>
+
+Here we displayed the ground displacement caused by the earthquake. The first colomn is the ground truth displacement for reference.
+The second and third ones are from orientations based on 3D helmert transformation using GCPs. 
+The forth and fifth ones are resulted from orientations refined in bundle adjustment with our correspondences.
+As can be seen, an up-lateral strike-slip movement along the sea is present in the forth and fifth colomns, which is coherent with the ground truth, but we can’t see the same signal in the second and thrid colomns. It means that the refined orientations are precise enough, thanks to our inter-epoch correspondences.
+
+<p align="center">
+  <img src="images/GroundDisplacement.png" width="600">
+</p>
+
+<p align="center">
+Figure 17. Groud displacement
+</p>
+
 
 # Conclusion
 
