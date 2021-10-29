@@ -38,7 +38,7 @@ In the following we present the methodology and some experiments. If you are int
 
 # Observation and motivation
 
-The keypoint of our method is to use 3D geometry to guide matching. This idea comes from the observation that RGB images have the following shortcomings:
+The key idea of our method is to use 3D geometry to guide matching. This idea comes from the observation that RGB images have the following shortcomings:
 * (1) Appearance changes over time (See Figure 2);
 * (2) Hard to match poorly textured areas (See Figure 3).
 
@@ -203,14 +203,6 @@ We display 4 sets of DoDs below.
 * (4) DoD resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
 
 In the DoD of (3) and (4), the doom effect is effectively mitigated while the real scene changes are kept, thanks to our numerous and precise inter-epoch correspondences.
-
-<p align="center">
-  <img src="images/DoD.png" width="800">
-</p>
-
-<p align="center">
-Figure 14. DoD in real case
-</p>
 
 A subregion of scene evolution is displayed below, a seaport as well as several new buildings emerged and are well detected with our method.
 
