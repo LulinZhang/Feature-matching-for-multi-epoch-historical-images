@@ -245,7 +245,7 @@ The forth and fifth ones are resulted from orientations refined in bundle adjust
 As can be seen, an up-lateral strike-slip movement along the sea is present in the forth and fifth colomns, which is coherent with the ground truth, but we can’t see the same signal in the second and thrid colomns. It means that the refined orientations are precise enough, thanks to our inter-epoch correspondences.
 
 <p align="center">
-  <img src="images/GroundDisplacement.png" width="700">
+  <img src="images/GroundDisplacement.png" width="800">
 </p>
 
 <p align="center">
