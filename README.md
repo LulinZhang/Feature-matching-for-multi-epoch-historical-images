@@ -199,9 +199,9 @@ Figure 13. DoD in real case
 
 We display 4 sets of DoDs below.
 
-* (1) DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated;
-* (2) DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. The systematic error is mitigated thanks to our dense correspondences in DSMs;
-* (3) DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching;
+* (1) DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated.
+* (2) DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. The systematic error is mitigated, but still obvious.
+* (3) DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching.
 * (4) DoD resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
 
 In the DoD of (3) and (4), the doom effect is effectively mitigated while the real scene changes are kept, thanks to our numerous and precise inter-epoch correspondences.
@@ -226,10 +226,10 @@ Figure 15. Scene evolution
 
 ## Dataset with earthquake
 
-We also applied our method on a dataset that witnessed an earthquake to see if our method is good enough for high precision ground survey. 
-It locates in the north of Awaji Island, Japan. The well-known Kobe earthquake happened here in January 1995. 
+We also applied our method on a dataset that witnessed an earthquake, in order to see if the result is precise enough for detecting earthquake displacement. 
+The dataset locates in the north of Awaji Island, Japan. The well-known Kobe earthquake happened here in January 1995. 
 The dataset is mainly covered with mountain area and narrow urban zones along the sea (see Figure 16).
-We have two sets of images: pre-event acquired in 1991 and post-event acquired in 1995. In this dataset we are interested in localizing the earthquake fault.
+We have two sets of images: pre-event acquired in 1991 and post-event acquired in 1995.
 
 <p align="center">
   <img src="images/Kobe-DOM.png" width="700">
@@ -239,10 +239,15 @@ We have two sets of images: pre-event acquired in 1991 and post-event acquired i
 Figure 16. Scene demonstration
 </p>
 
-Here we displayed the ground displacement caused by the earthquake. The first colomn is the ground truth displacement for reference.
-The second and third ones are from orientations based on 3D helmert transformation using GCPs. 
-The forth and fifth ones are resulted from orientations refined in bundle adjustment with our correspondences.
-As can be seen, an up-lateral strike-slip movement along the sea is present in the forth and fifth colomns, which is coherent with the ground truth, but we can’t see the same signal in the second and thrid colomns. It means that the refined orientations are precise enough, thanks to our inter-epoch correspondences.
+We display 5 sets of ground displacement below.
+
+* (1) Ground truth ground displacement provided by the Japan Meteorological Agency.
+* (2) Ground displacement resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs.
+* (3) Ground displacement resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration.
+* (4) Ground displacement resulted from orientations refined in bundle adjustment with our correspondences based on guided matching.
+* (5) Ground displacement resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
+
+In (2) and (3), no earthquake fault is observed. However, in (4) and (5), an up-lateral strike-slip movement along the sea is present , which is coherent with (1). It indicates that the refined orientations are precise enough, thanks to our inter-epoch correspondences.
 
 <p align="center">
   <img src="images/GroundDisplacement.png" width="800">
