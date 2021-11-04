@@ -48,7 +48,7 @@ The key idea of our method is to use 3D geometry to guide matching. This idea co
 |   <p align="center">   (c) DSM 1971 </p> |      <p align="center">    (d) DSM 2015  </p> |
 | <p align="center"> <img src="images/AppearanceChangeDSML.png" width="300"> </p> | <p align="center"> <img src="images/AppearanceChangeDSMR.png" width="300"> </p> |
 
-<p align="center"> Figure 2. The same zone observed in different time. The images changed a lot while the DSMs stayed stable over time. </p> 
+<p align="center"> Figure 2. The same zone observed in different times. The images changed a lot while the DSMs stayed stable over time. </p> 
 
 |   <p align="center">   (e) Image 1991 </p> |      <p align="center">    (f) Image 1994  </p> |
 |-|-|
