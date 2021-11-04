@@ -34,7 +34,7 @@ We propose a fully automatic approach to computing robust inter-epoch feature co
 * Rough-to-precise matching strategy that helps to drastically reduce ambiguity. In particular, we use the depth information to roughly co-register our epochs. The 3D landscape is globally stable over time and provides sufficient correspondences *through time*. Once co-registered, we levarage the 3D *a priori* to narrow down the search space in precise matching. 
 * Upscaling of the learning based feature matching algorithms to high resolution imagery. To do that, we introduced an image tiling scheme.
 
-In the following we present the methodology and some experiments. If you are interested in using our method, please refer to the source code of MicMac Github [^4], as well as 2 jupyter tutorials [^5] [^6]. We also provide an introduction video [^7]. The datasets used in our publication [^3] will be soon published in an open-access repository.
+In the following we present the methodology and some experiments. If you are interested in using our method, please refer to the source code of MicMac Github [^4], as well as 2 jupyter tutorials [^5] [^6]. We also provide an introduction video [^7] and project website [^8]. The datasets used in our publication [^3] will be soon published in an open-access repository.
 
 # Observation and motivation
 
@@ -305,3 +305,5 @@ We can obtain accurate features on high resolution images by tiling the input im
 [^6]: [Jupyter tutorial of our method for matching multi-epoch historical images (aerial and satellite images mixed)](https://colab.research.google.com/drive/14okQ8bBhEZmy6EGRIQvazTqrN39oc_K5)
 
 [^7]: Introduction video: [Feature matching for multi-epoch historical aerial images](https://youtu.be/YnF-F0UJaSM)
+
+[^8]: Project website: [Feature matching for multi-epoch historical aerial images](https://www.umr-lastig.fr/ewelina-rupnik/historicalfeatures.html)
