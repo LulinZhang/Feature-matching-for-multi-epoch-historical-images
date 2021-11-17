@@ -40,8 +40,8 @@ In the following we present the methodology and some experiments. If you are int
 
 The key idea of our method is to use 3D geometry to guide matching. This idea comes from the observation that RGB images have the following shortcomings:
 * (1) Their appearances 
-*   (a) change over time (see Figure 2); 
-*   (b) change with varying view angles on non-Lambertian surfaces (see Figure 3).
+  *   (a) change over time (see Figure 2); 
+  *   (b) change with varying view angles on non-Lambertian surfaces (see Figure 3).
 * (2) Self similarities (e.g. repetitive patterns) favor false matches (see Figure 3).
 
 |         (a) Image 1971        | (b) Image 2015 |
