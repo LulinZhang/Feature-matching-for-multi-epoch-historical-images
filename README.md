@@ -39,9 +39,7 @@ In the following we present the methodology and some experiments. If you are int
 # Observation and motivation
 
 The key idea of our method is to use 3D geometry to guide matching. This idea comes from the observation that RGB images have the following shortcomings:
-1. Their appearances:
-  *   change over time (see Figure 2); 
-  *   change with varying view angles on non-Lambertian surfaces (see Figure 3).
+1. Their appearances change over time (see Figure 2), and with varying view angles on non-Lambertian surfaces (see Figure 3).
 2. Self similarities (e.g. repetitive patterns) favor false matches (see Figure 3).
 
 |         (a) Image 1971        | (b) Image 2015 |
@@ -61,8 +59,8 @@ The key idea of our method is to use 3D geometry to guide matching. This idea co
 <p align="center"> Figure 3. The same vegetation observed in different times. They present non-Lambertian reflection and self similarities, while the DSMs are distinctive. </p> 
 
 Fortunately, 3D geometry such as DSM, makes up these shortcomings perfectly. Therefore, we designed a rough-to precise matching pipeline to take advantage of DSMs for multi-epoch image alignment by:
-* (1) Matching DSM for rough co-registration;
-* (2) Reducing ambiguity in precise matching.
+1. Matching DSM for rough co-registration;
+2. Reducing ambiguity in precise matching.
 
 The details are presented in the next section.
 
@@ -100,9 +98,9 @@ Figure 6. Four rotation hypotheses
 
 To increase the robustness of our correspondences, we do the following:
 
-(1) We introduce a tiling scheme and rotation hypotheses. The classical SuperGlue provides unsatisfactory result when applied to large images and it is not invariant to rotations larger than 45◦.
+1. We introduce a tiling scheme and rotation hypotheses. The classical SuperGlue provides unsatisfactory result when applied to large images and it is not invariant to rotations larger than 45◦.
 
-(2) We choose matching DSMs over original RGB images, and it is motivated by several merits:
+2. We choose matching DSMs over original RGB images, and it is motivated by several merits:
 * Redundancy caused by the forward and side overlapping areas is removed;
 * It implicitly enables a follow-up search for globally consistent inliers;
 * It decreases the combinatorial complexity caused by rotation ambiguity;
@@ -128,8 +126,8 @@ We perform a precise matching under the guidance of the co-registered DSMs. Two 
 
 ### Get tentative inter-epoch correspondences
 
-* (1) Guided matching is designed for hand-crafted methods like SIFT. We predict the keypoint locaiton from one epoch to another via the co-registered DSM, and search only the neighborhood of the predicted keypoint to reduce ambiguity.
-* (2) Patch matching is designed for deep learning methods like SuperGlue. We use the co-registered DSM to predict the corresponding patches, followed with resampling to remove the scale and rotation difference. The patch pair will be feed into SuperGlue to get tentative correspondences.
+1. Guided matching is designed for hand-crafted methods like SIFT. We predict the keypoint locaiton from one epoch to another via the co-registered DSM, and search only the neighborhood of the predicted keypoint to reduce ambiguity.
+2. Patch matching is designed for deep learning methods like SuperGlue. We use the co-registered DSM to predict the corresponding patches, followed with resampling to remove the scale and rotation difference. The patch pair will be feed into SuperGlue to get tentative correspondences.
 
 <p align="center">
   <img src="images/precisematch.png" width="800">
@@ -201,10 +199,10 @@ Figure 13. DoD in real case
 
 We display 4 sets of DoDs below.
 
-* (1) DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated.
-* (2) DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. The systematic error is mitigated, but still obvious.
-* (3) DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching.
-* (4) DoD resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
+1. DoD resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs. This DoD is for comparison. As can be seen, this DoD showed obvious doom effect as the camera parameters of epoch 1954 are poorly estimated.
+2. DoD resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration. The systematic error is mitigated, but still obvious.
+3. DoD resulted from orientations refined in bundle adjustment with our correspondences based on guided matching.
+4. DoD resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
 
 In the DoD of (3) and (4), the doom effect is effectively mitigated while the real scene changes are kept, thanks to our numerous and precise inter-epoch correspondences.
 
@@ -243,11 +241,11 @@ Figure 16. Scene demonstration
 
 We display 5 sets of ground displacement below.
 
-* (1) Ground truth ground displacement provided by the Japan Meteorological Agency.
-* (2) Ground displacement resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs.
-* (3) Ground displacement resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration.
-* (4) Ground displacement resulted from orientations refined in bundle adjustment with our correspondences based on guided matching.
-* (5) Ground displacement resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
+1. Ground truth ground displacement provided by the Japan Meteorological Agency.
+2. Ground displacement resulted from orientations based on 3D helmert transformation using 3 manually measured GCPs.
+3. Ground displacement resulted from orientations based on 3D helmert transformation using GCPs automatically recovered from our rough co-registration.
+4. Ground displacement resulted from orientations refined in bundle adjustment with our correspondences based on guided matching.
+5. Ground displacement resulted from orientations refined in bundle adjustment with our correspondences based on patch matching.
 
 In (2) and (3), no earthquake fault is observed. However, in (4) and (5), an up-lateral strike-slip movement along the sea is present , which is coherent with (1). It indicates that the refined orientations are precise enough, thanks to our inter-epoch correspondences.
 
