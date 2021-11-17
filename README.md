@@ -260,9 +260,7 @@ Figure 17. Groud displacement
 
 # Conclusion
 
-Our method exploited rough-to-precise matching strategy to reduce ambiguity with the help of the depth information. We also introduced tiling scheme and checking scale and rotation to upscale the matching performance.
-
-Experiments showed that our method is able to mitigate systematic errors induced by poorly estimated camera, and it is robust to drastic scene changes.
+Our method exploited rough-to-precise matching strategy to reduce ambiguity with the help of the depth information. We also introduced a tiling scheme to upscale the learning-based feature extractors to high-resolution imagery, and enhanced the matching robustness by removing scale and rotation ambiguities. Experiments showed that our method is able to mitigate systematic errors induced by poorly estimated camera, and it is robust to drastic scene changes.
 
 # Lesson learned
 
