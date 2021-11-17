@@ -39,7 +39,9 @@ In the following we present the methodology and some experiments. If you are int
 # Observation and motivation
 
 The key idea of our method is to use 3D geometry to guide matching. This idea comes from the observation that RGB images have the following shortcomings:
-* (1) Their appearances (a) change over time (see Figure 2); (b) change with varying view angles on non-Lambertian surfaces (see Figure 3).
+* (1) Their appearances 
+*   (a) change over time (see Figure 2); 
+*   (b) change with varying view angles on non-Lambertian surfaces (see Figure 3).
 * (2) Self similarities (e.g. repetitive patterns) favor false matches (see Figure 3).
 
 |         (a) Image 1971        | (b) Image 2015 |
@@ -122,7 +124,7 @@ However, we also considered using orthophotos for the rough co-registration stag
 
 ## Precise matching
 
-We perform a precise matching under the guidance of the co-registered DSMs. 2 options (guided matching and patch matching) are provide to get tentative inter-epoch correspondences, followed by removing the outliers with 3D RANSAC and cross correlation.
+We perform a precise matching under the guidance of the co-registered DSMs. Two options (guided matching and patch matching) are provide to get tentative inter-epoch correspondences, followed by removing the outliers with 3D RANSAC and cross correlation.
 
 ### Get tentative inter-epoch correspondences
 
